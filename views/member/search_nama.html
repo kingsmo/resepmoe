@@ -92,7 +92,7 @@
       <div class="container ">
         <div class="navbar-translate">
           <a style="font-size:15px;" class="navbar-brand"
-            href="<?php echo base_url('resep/halamanutama');?>">RESEP•MU</a>
+            href="https://resepmoe.s3.us-east-2.amazonaws.com/views/member/halamanutama.html">RESEP•MU</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="fa fa-bars" style="color:white"></span>
@@ -101,31 +101,18 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url('resep/halamanutama')?>">Home<span
+              <a class="nav-link" href="https://resepmoe.s3.us-east-2.amazonaws.com/views/member/halamanutama.html">Home<span
                   class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
               <a class="dropdown-toogle nav-link" id="dropdown01" data-toggle="dropdown" href="#">Notification <div
-                  class="badge badge-primary"><?php if($total_notif>0 && $notif[0]['status']==0){ echo $total_notif; }?>
+                  class="badge badge-primary">1
                 </div> </a>
               <div class="dropdown-menu anyClass1" aria-labelledby="dropdown01">
-                <?php
-                if (empty($notif)) {
-                        echo  "<p class='dropdown-item'>Anda tidak memiliki notifikasi.</p>";
-                }else{ foreach ($notif as $n){
-                  if($n['jenis']=="komentar"){?>
-                <a class="dropdown-item" href="<?php echo base_url('user/updatenotif/'.$n['id_notifikasi'])?>">
-                  <p><?php echo $n['create_add']?><br />
-                    <?php echo $n['memberi_notif']?> mengomentari resep anda.</p>
+                <a class="dropdown-item" href="https://resepmoe.s3.us-east-2.amazonaws.com/views/member/halamanresep.html">
+                  <p>4-11-2019 12:23:22<br />
+                    wunsel mengomentari resep anda.</p>
                 </a>
-                <div class="dropdown-divider"></div>
-                <?php }else if($n['jenis']=="follow"){ ?>
-                <a class="dropdown-item" href="<?php echo base_url('user/updatenotif/'.$n['id_notifikasi']);?>">
-                  <p><?php echo $n['create_add']?><br />
-                    <?php echo $n['memberi_notif']?> mengikuti anda.</p>
-                </a>
-                <div class="dropdown-divider"></div>
-                <?php }}}?>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -134,8 +121,8 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item"
-                  href="<?php echo base_url('/user/profile/'.$this->session->userdata('username').'/'.$_SESSION['id_user'])?>">Profile</a>
-                <a class="dropdown-item" href="<?php echo base_url('/user/logout') ?>">Logout</a>
+                  href="https://resepmoe.s3.us-east-2.amazonaws.com/views/member/halamanprofile.html">Profile</a>
+                <a class="dropdown-item" href="https://resepmoe.s3.us-east-2.amazonaws.com/views/layout/login.html">Logout</a>
               </div>
             </li>
           </ul>
