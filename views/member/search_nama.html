@@ -13,6 +13,50 @@
   .sidebar-collapse .navbar-collapse:before {
     background: linear-gradient(#f96332 100%, #fff 90%) !important;
   }
+
+  @media (max-width: 992px) {
+    .title {
+      font-size: 18px;
+    }
+
+    .card {
+      width: 8rem !important;
+      height: 15rem !important;
+      font-size: 8px;
+    }
+
+    .card-body {
+      font-size: 7px;
+    }
+
+    .card-title {
+      height: 36px;
+    }
+
+    .category {
+      height: 0px;
+    }
+
+    .footer {
+      margin-top: 260px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .card {
+      width: 15rem;
+      height: 22rem;
+      font-size: 12px;
+    }
+
+    .card-title {
+      height: 73px;
+    }
+
+    .category {
+      height: 0px;
+    }
+  }
 </style>
 
 <head>
@@ -123,116 +167,74 @@
   <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/sweetalert/jquery.sweet-alert.custom.js"></script>
 </body>
 
-<body class="profile-page sidebar-collapse">
-  <div class="section section-signup"
-    style="background-image: url('https://resepmoe.s3.us-east-2.amazonaws.com/assets/img/backgroundeditprof.jpg'); background-size: cover; background-position: top center; min-height: 700px;">
-    <div class="container">
-      <div class="row">
-        <div class="card card-signup" data-background-color="orange" style="opacity: 0.96">
-          <form class="form" method="post" action="<?php echo base_url('user/updateProfile');?>"
-            enctype="multipart/form-data">
-            <div class="card-header text-center">
-              <h3 class="card-title title-up">Edit Profile</h3>
-            </div>
-            <div class="card-body">
-              <div class="input-group no-border">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-user-circle"></i>
-                  </span>
-                </div>
-                <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama"
-                  value="<?php echo $user[0]['nama'] ?>" required>
-              </div>
-              <div>
-                <i class="fa fa-venus-mars"></i>
-                <label style="font-size: 12px" for="jenis_kelamin"> Jenis Kelamin:</label>
-                <select style="margin-bottom:10px;" name="jenis_kelamin" class="form-control" id="jenis_kelamin">
-                  <option value="Laki-laki" <?= $user[0]['jenis_kelamin'] == "Laki-laki" ? "selected" : "" ?>
-                    style="color:black;">Laki-laki</option>
-                  <option value="Perempuan" <?= $user[0]['jenis_kelamin'] == "Perempuan" ? "selected" : "" ?>
-                    style="color:black;">Perempuan</option>
-                </select>
-              </div>
-              <div class="input-group no-border">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-user-circle"></i>
-                  </span>
-                </div>
-                <input type="text" name="username" value="<?php echo $user[0]['username'] ?>"
-                  placeholder="Masukkan Username" class="form-control" disabled required />
-              </div>
-              <div class="input-group no-border">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-lock"></i>
-                  </span>
-                </div>
-                <input type="password" name="password" value="<?php echo $user[0]['password'] ?>" class="form-control"
-                  placeholder="Masukkan Password" required>
-              </div>
-              <div class="input-group no-border">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-envelope"></i>
-                  </span>
-                </div>
-                <input type="text" class="form-control" name="email" value="<?php echo $user[0]['email'] ?>"
-                  placeholder="Masukkan Email"
-                  oninvalid="if (this.value == ''){this.setCustomValidity('This field is required!')} if (this.value != ''){this.setCustomValidity('The email you entered is invalid!')}"
-                  oninput="setCustomValidity('')" required="">
-              </div>
-              <div class="input-group no-border">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-phone"></i>
-                  </span>
-                </div>
-                <input type="number" class="form-control" value="<?php echo $user[0]['nomor_telepon'] ?>"
-                  name="nomor_telepon" placeholder="Masukkan Nomor Telepon" required>
-              </div>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span style="width:75px; height:32px; font-size:8px;" class="input-group-text"
-                    id="inputGroupFileAddon01">Upload Foto</span>
-                </div>
-                <div class="custom-file">
-                  <input accept="image/*" type="file" name="user_foto" class="custom-file-input" id="inputGroupFile01"
-                    aria-describedby="inputGroupFileAddon01">
-                  <label style="font-size:12px;" class="custom-file-label" for="inputGroupFile01">Choose File</label>
-                </div>
+<body class="sidebar-collapse">
+  <div class="wrapper">
+    <div class="section section-about-us" style="padding:20px;">
+      <div class="container">
+
+        <div class="row" style="padding-top:40px;">
+
+
+          <div class="text-center col-md-12">
+            <h1 class="title" style="color:#2c2c2c;">Pencarian</h1>
+          </div>
+          <div class="col-md-12">
+            <h6>Hasil Pencarian: <?php echo $this->input->post('cari')?></b></h6>
+          </div>
+          <div class="col-md-12">
+            <h5 class="title" style="color:#2c2c2c;">Nama Resep</h5>
+          </div>
+          <?php
+        if (empty($user)) {
+          echo  "<p style='padding-left:20px;'>Data tidak ditemukan</p>";
+        }
+        else if($user[0]["id_resep"]==null){
+          echo  "<p style='padding-left:20px;'>Data tidak ditemukan</p>";
+        }else{
+
+      foreach($user as $h){ ?>
+          <div class="col-md-3 col-6 text-center">
+            <div class="card">
+              <img class="card-img-top" style="height:50%;"
+                src="/resepmu/application/assets/img/resep/<?=$h["resep_foto"]?>" alt="Card image cap">
+              <div class="card-body" style="padding-top: 0px;">
+                <h5 class="card-title" style="margin-top: 10px;"><?php echo $h["nama_resep"]?></h5>
+                <a href="<?php echo base_url('/user/profile/'.$h["username"].'/'.$h["id_user"])?>">
+                  <p class="category text-primary"><?php echo $h["nama"]?></p>
+                </a><br>
+                <a href="<?php echo base_url('/resep/halaman_resep/'.$h["id_resep"])?>" class="btn btn-primary"
+                  style="margin-top: 0px;">Lihat</a>
               </div>
             </div>
-            <div class="card-footer text-center">
-              <button type="submit" class="btn btn-neutral btn-round btn-lg">Simpan</button>
-              <?php echo validation_errors('<div class="error">', '</div>'); ?>
-            </div>
-          </form>
+          </div>
+          <?php  } } ?>
         </div>
+
+        <div class="row" style="padding-top:30px;">
+          <div class="col-md-12">
+            <h5 class="title" style="color:#2c2c2c;">User</h5>
+          </div>
+          <?php
+        if (empty($user)) {
+                echo  "<p style='padding-left:20px;'>Data tidak ditemukan</p>";
+        }else{ ?>
+          <div class="col-3 text-center">
+            <div class="card">
+              <img class="card-img-top" style="height:50%;"
+                src="/resepmu/application/assets/img/user/<?=$user[0]["user_foto"]?>" alt="Card image cap">
+              <div class="card-body" style="padding-top: 0px;">
+                <h5 class="card-title" style="margin-top: 10px;"><?php echo $user[0]["username"]?></h5>
+                <p class="category text-primary"><?php echo $user[0]["nama"]?></p><br>
+                <a href="<?php echo base_url('/user/profile/'.$user[0]["username"].'/'.$user[0]["id_user"])?>"
+                  class="btn btn-primary" style="margin-top: 0px;">Lihat</a>
+              </div>
+            </div>
+          </div>
+          <?php  } ?>
+        </div>
+        <!-- <div class="row justify-content-center" style="padding-top:30px;">
+      echo $halaman;?>
+    </div> -->
       </div>
     </div>
   </div>
-</body>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOM loaded");
-    var elements = document.getElementsByTagName("INPUT");
-    for (var i = 0; i < elements.length; i++) {
-      elements[i].oninvalid = function (e) {
-        if (e.target.validity.badInput) {
-          e.target.setCustomValidity("Masukan harus angka");
-          return;
-        }
-        if (e.target.validity.valueMissing) {
-          e.target.setCustomValidity("Data tidak boleh kosong");
-          return;
-        }
-
-      };
-      elements[i].oninput = function (e) {
-        e.target.setCustomValidity("");
-      };
-    }
-  })
-</script>

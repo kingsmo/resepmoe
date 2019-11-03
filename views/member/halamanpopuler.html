@@ -13,6 +13,124 @@
   .sidebar-collapse .navbar-collapse:before {
     background: linear-gradient(#f96332 100%, #fff 90%) !important;
   }
+
+  @media (max-width: 992px) {
+    .follow {
+      padding: 0px !important;
+    }
+
+    .title {
+      margin-top: 70px;
+      font-size: 18px;
+    }
+
+    .section-about-us {
+      padding: 30px !important;
+    }
+
+    .card {
+      width: 8rem !important;
+      height: 15rem !important;
+      font-size: 8px;
+    }
+
+    .card-body {
+      font-size: 7px;
+    }
+
+    .card-title {
+      height: 36px;
+    }
+
+    .category {
+      height: 0px;
+    }
+
+    h4.title {
+      margin-top: 0px;
+      padding-top: 0px;
+      font-size: 12px;
+    }
+
+    h1.title {
+      margin-top: 48px;
+    }
+
+    span.resepuname {
+      background-color: #b9b7b7e6 !important;
+      height: 40px;
+    }
+
+    input.uname {
+      height: 40px;
+      background-color: #b9b7b7e6 !important;
+      width: 95px !important;
+      border-top-right-radius: 40px !important;
+      border-bottom-right-radius: 40px !important;
+    }
+
+    button.cr {
+      margin-left: 20px;
+      margin-top: 0px;
+    }
+
+    .crnm {
+      width: 99% !important;
+      margin: auto;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .follow {
+      padding: 0px !important;
+    }
+
+    .card {
+      width: 15rem;
+      height: 22rem;
+      font-size: 12px;
+    }
+
+    .card-title {
+      height: 73px;
+    }
+
+    .category {
+      height: 0px;
+    }
+
+    h4.title {
+      margin-top: 0px;
+      padding-top: 0px;
+    }
+
+    h1.title {
+      margin-top: 48px;
+    }
+
+    span.resepuname {
+      background-color: #b9b7b7e6 !important;
+      height: 40px;
+    }
+
+    input.uname {
+      height: 40px;
+      background-color: #b9b7b7e6 !important;
+      width: 500px !important;
+      border-top-right-radius: 40px !important;
+      border-bottom-right-radius: 40px !important;
+    }
+
+    button.cr {
+      margin-left: 20px;
+      margin-top: 0px;
+    }
+
+    .crnm {
+      width: 65% !important;
+      margin: auto;
+    }
+  }
 </style>
 
 <head>
@@ -123,116 +241,116 @@
   <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/sweetalert/jquery.sweet-alert.custom.js"></script>
 </body>
 
-<body class="profile-page sidebar-collapse">
-  <div class="section section-signup"
-    style="background-image: url('https://resepmoe.s3.us-east-2.amazonaws.com/assets/img/backgroundeditprof.jpg'); background-size: cover; background-position: top center; min-height: 700px;">
-    <div class="container">
-      <div class="row">
-        <div class="card card-signup" data-background-color="orange" style="opacity: 0.96">
-          <form class="form" method="post" action="<?php echo base_url('user/updateProfile');?>"
-            enctype="multipart/form-data">
-            <div class="card-header text-center">
-              <h3 class="card-title title-up">Edit Profile</h3>
-            </div>
-            <div class="card-body">
-              <div class="input-group no-border">
+<body class="sidebar-collapse">
+  <div class="wrapper">
+    <div class="page-header page-header-small">
+      <div class="page-header-image" data-parallax="true"
+        style="background-image: url('/resepmu/application/assets/img/backgroundutama1.jpg');">
+      </div>
+      <div class="content-center">
+        <div class="container">
+          <h1 class="title">Solusi resep masakan.</h1>
+          <h4 class="title">bingung mencari resep sesuai dengan bahan yang dimiliki? cari disini!</h4>
+          <!-- berdasarkan bahan makanan -->
+          <form class="" action="<?php echo base_url('resep/search');?>" method="get">
+            <div class="text-center">
+              <div class="input-group no-border input-lg">
                 <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-user-circle"></i>
+                  <span style="background-color:rgba(255, 255, 255, 0.87)" class="input-group-text">
+                    <i class="fa fa-pencil-square-o"></i>
                   </span>
                 </div>
-                <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama"
-                  value="<?php echo $user[0]['nama'] ?>" required>
+                <input style="background-color: rgba(255, 255, 255, 0.87);" type="text" value=""
+                  placeholder="Masukkan bahan makanan..." class="form-control" name="cariBahan" />
+
               </div>
-              <div>
-                <i class="fa fa-venus-mars"></i>
-                <label style="font-size: 12px" for="jenis_kelamin"> Jenis Kelamin:</label>
-                <select style="margin-bottom:10px;" name="jenis_kelamin" class="form-control" id="jenis_kelamin">
-                  <option value="Laki-laki" <?= $user[0]['jenis_kelamin'] == "Laki-laki" ? "selected" : "" ?>
-                    style="color:black;">Laki-laki</option>
-                  <option value="Perempuan" <?= $user[0]['jenis_kelamin'] == "Perempuan" ? "selected" : "" ?>
-                    style="color:black;">Perempuan</option>
-                </select>
-              </div>
-              <div class="input-group no-border">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-user-circle"></i>
-                  </span>
-                </div>
-                <input type="text" name="username" value="<?php echo $user[0]['username'] ?>"
-                  placeholder="Masukkan Username" class="form-control" disabled required />
-              </div>
-              <div class="input-group no-border">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-lock"></i>
-                  </span>
-                </div>
-                <input type="password" name="password" value="<?php echo $user[0]['password'] ?>" class="form-control"
-                  placeholder="Masukkan Password" required>
-              </div>
-              <div class="input-group no-border">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-envelope"></i>
-                  </span>
-                </div>
-                <input type="text" class="form-control" name="email" value="<?php echo $user[0]['email'] ?>"
-                  placeholder="Masukkan Email"
-                  oninvalid="if (this.value == ''){this.setCustomValidity('This field is required!')} if (this.value != ''){this.setCustomValidity('The email you entered is invalid!')}"
-                  oninput="setCustomValidity('')" required="">
-              </div>
-              <div class="input-group no-border">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-phone"></i>
-                  </span>
-                </div>
-                <input type="number" class="form-control" value="<?php echo $user[0]['nomor_telepon'] ?>"
-                  name="nomor_telepon" placeholder="Masukkan Nomor Telepon" required>
-              </div>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span style="width:75px; height:32px; font-size:8px;" class="input-group-text"
-                    id="inputGroupFileAddon01">Upload Foto</span>
-                </div>
-                <div class="custom-file">
-                  <input accept="image/*" type="file" name="user_foto" class="custom-file-input" id="inputGroupFile01"
-                    aria-describedby="inputGroupFileAddon01">
-                  <label style="font-size:12px;" class="custom-file-label" for="inputGroupFile01">Choose File</label>
-                </div>
-              </div>
-            </div>
-            <div class="card-footer text-center">
-              <button type="submit" class="btn btn-neutral btn-round btn-lg">Simpan</button>
-              <?php echo validation_errors('<div class="error">', '</div>'); ?>
+              <button type="submit" class="btn btn-primary btn-round">Search</button>
             </div>
           </form>
+          <!-- akhir berdasarkan bahan makanan -->
+        </div>
+      </div>
+    </div>
+    <div class="section section-about-us" style="padding:50px;">
+      <div class="container">
+        <div class="col-12 text-center">
+          <h4 class="title">cari resep atau user.</h4>
+        </div>
+        <form class="" action="<?php echo base_url('resep/search_byname');?>" method="post">
+
+          <div class="input-group no-border input-lg crnm">
+            <div class="input-group-prepend">
+              <span class="input-group-text resepuname">
+                <i class="fa fa-user-circle"></i>
+              </span>
+            </div>
+            <input type="text" value="" placeholder="Masukkan nama resep atau username..." class="form-control uname"
+              name="cari" />
+            <button type="submit" class="btn btn-primary btn-round cr">Search</button>
+          </div>
+
+        </form>
+
+        <div class="row">
+          <div class="col-12 text-right">
+            <?php if (isset($_SESSION['id_user'])) : ?>
+            <a href="<?php echo base_url('resep/tambahresep');?>" class="btn btn-primary btn-round float-right">+ Tambah
+              Resep</a>
+            <?php endif ?>
+          </div>
+        </div>
+        <div class="row">
+          <?php if (isset($_SESSION['id_user'])){    ?>
+          <div class="col-4 follow text-right" style="margin-bottom: 20px">
+            <a href="<?php echo base_url('resep/halamanutama');?>" class="btn btn-primary btn-round">Terbaru</a>
+          </div>
+
+          <div class="col-4 follow text-center" style="margin-bottom: 20px">
+            <a href="<?php echo base_url('teman/resepfollowing/'.$_SESSION['id_user']);?>"
+              class="btn btn-primary btn-round">Following</a>
+          </div>
+
+          <div class="col-4 follow text-left" style="margin-bottom: 20px">
+            <a href="<?php echo base_url('resep/getPopuler');?>" class="btn btn-primary btn-round">Populer</a>
+          </div>
+          <div class="text-center col-md-12 col-sm-12">
+            <h1 class="title" style="color:#2c2c2c; margin-top:0;">Populer</h1>
+          </div>
+
+          <?php
+          }else{?>
+
+          <div class="col-6 text-right" style="margin-bottom: 20px">
+            <a href="<?php echo base_url('resep/halamanutama');?>" class="btn btn-primary btn-round">Terbaru</a>
+          </div>
+          <div class="col-6 text-left" style="margin-bottom: 20px">
+            <a href="<?php echo base_url('resep/getPopuler');?>" class="btn btn-primary btn-round">Populer</a>
+          </div>
+          <div class="text-center col-md-12 col-sm-12">
+            <h1 class="title" style="color:#2c2c2c; margin-top:0;">Populer</h1>
+          </div>
+          <?php }?>
+          <?php foreach ($resep as $h) { ?>
+          <div class="col-md-3 col-sm-3 col-6 text-center">
+            <div class="card">
+              <img class="card-img-top" style="height:50%;"
+                src="/resepmu/application/assets/img/resep/<?=$h["resep_foto"]?>" alt="Card image cap">
+              <div class="card-body text-center" style="padding-top: 0px;">
+                <h4 class="card-title" style="margin-top: 10px;"><?php echo $h["nama_resep"]?></h4>
+                <a href="<?php echo base_url('/user/profile/'.$h["username"].'/'.$h["id_user"])?>">
+                  <p class="category text-primary"><?php echo $h["username"]?></p>
+                </a><br>
+                <a href="<?php echo base_url('/resep/halaman_resep/'.$h["id_resep"])?>"
+                  class="btn btn-primary btn-lihat" style="margin-top: 0px;">Lihat</a>
+              </div>
+            </div>
+          </div>
+          <?php  } ?>
+        </div>
+        <div class="row justify-content-center" style="padding-top:30px;">
+          <?php echo $halaman;?>
         </div>
       </div>
     </div>
   </div>
 </body>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOM loaded");
-    var elements = document.getElementsByTagName("INPUT");
-    for (var i = 0; i < elements.length; i++) {
-      elements[i].oninvalid = function (e) {
-        if (e.target.validity.badInput) {
-          e.target.setCustomValidity("Masukan harus angka");
-          return;
-        }
-        if (e.target.validity.valueMissing) {
-          e.target.setCustomValidity("Data tidak boleh kosong");
-          return;
-        }
-
-      };
-      elements[i].oninput = function (e) {
-        e.target.setCustomValidity("");
-      };
-    }
-  })
-</script>
