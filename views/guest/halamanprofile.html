@@ -15,40 +15,39 @@
    .title {
      margin-top: 70px;
    }
-
+   .card {
+     width: 8rem !important;
+     height: 15rem !important;
+     font-size: 8px;
+   }
    .social-description{
      padding-left: 0px !important;
      padding-right: 0px !important;
      width: 100px !important;
    }
-   .follow{
-     height: 60px;
-     width: 60px;
+   .card-img-top {
+     height:95px;
    }
-   .tombol-lihat{
-     padding-left:50px !important;
+   .card-body{
+     padding:11px !important;
    }
-   .uname{
-     padding-left:10px;
-     width: 146px;
+   .card-title{
+     margin-bottom:9px !important;
+     margin-top:5px !important;
+     height: 24px;
+   }
+   p.nama{
+     margin-top: 30px;
+   }
+   p.create{
+     margin-top: 35px;
    }
   }
+
   @media (min-width: 992px) {
-   .follow{
-     height: 70px;
-     width: 70px;
-   }
-   .tombol-lihat{
-     margin-left:700px;
-   }
-   .img-follow{
-     max-width:12% !important;
-      padding-right:0px !important;
-   }
-   .uname{
-     padding-left:10px;
-     width: 191px;
-   }
+    .card-img-top {
+      height:360px;
+    }
   }
 </style>
 
@@ -140,21 +139,22 @@
           <p style="margin-top: 0px; margin-bottom: 0px; padding-top:10px; padding-right:10px;"><?php echo $profile[0]['username'] ?></p>
           <p style="margin-top: 0px; margin-bottom: 0px; padding-top:10px; padding-left:10px;"><?php echo $profile[0]['jenis_kelamin']?></p>
         </div>
-      <div class="content">
+
+        <div class="content">
           <a href="<?php echo base_url('/user/profile/'.$profile[0]['username'].'/'.$profile[0]['id_user'])?>">
-            <div class="social-description text-center" style="color:white;">
+            <div class="social-description col-4" style="color:white;">
               <h2><?php echo $total_rows?></h2>
               <p>Resep</p>
             </div>
           </a>
           <a href="<?php echo base_url('/teman/follow/'.$profile[0]['username'].'/'.$profile[0]['id_user'])?>">
-            <div class="social-description text-center" style="color:white;">
+            <div class="social-description col-4" style="color:white;">
               <h2><?php echo $total_rows_follow?></h2>
               <p>Mengikuti</p>
             </div>
           </a>
           <a href="<?php echo base_url('/teman/follower/'.$profile[0]['username'].'/'.$profile[0]['id_user'])?>">
-            <div class="social-description text-center" style="color:white;">
+            <div class="social-description col-4" style="color:white;">
               <h2><?php echo $total_rows_follower?></h2>
               <p>Diikuti</p>
             </div>
@@ -162,13 +162,13 @@
         </div>
       </div>
     </div>
-    <div class="section">
+    <div class="section" style="padding-right:30px; padding-left:30px;">
       <div class="container">
         <div class="button-container">
           <?php
           if(isset($_SESSION['id_user'])){
             if ($_SESSION['id_user']=== $profile[0]['id_user']){?>
-              <form action="<?php echo base_url('/teman/follow/'.$profile[0]['username'].'/'.$profile[0]['id_user'])?>" method="post">
+              <form action="<?php echo base_url('/user/profile/'.$profile[0]['username'].'/'.$profile[0]['id_user'])?>" method="post">
                 <button class="btn btn-primary btn-round btn-lg">Ikuti</button>
               </form>
             <?php }else if($ikuti == 0){ ?>
@@ -186,35 +186,34 @@
           <form action="<?php echo base_url('/user/login')?>" method="post">
             <button class="btn btn-primary btn-round btn-lg">Ikuti</button>
           </form>
-          <?php  }?>
+        <?php }?>
         </div>
-      <div class="row" style="margin-top:40px">
-        <div class="card">
-          <div class="card-header col-md-12 text-center">
-            <h3 style="margin-bottom: 0px; margin-top:20px;">Mengikuti</h3>
-          </div>
-          <div class="card-body">
-            <?php foreach($follow as $f){ ?>
-            <div class="row" style=" padding:30px;">
-              <div class="img-follow text-center" id="foto-following">
-                <img src="/resepmu/application/assets/img/user/<?=$f['user_foto']?>" alt="Circle Image" class="rounded-circle follow" >
-              </div>
-              <div class="uname" style="">
-                <h4 class="card-title" style="margin-top: 0px; margin-bottom:0px;"><?php echo $f['username']?></h4>
-                <p class="card-text"><?php echo $f['nama']?></p>
-              </div>
-              <div class="text-right tombol-lihat" style="">
-                <a href="<?php echo base_url('/user/profile/'.$f['username'].'/'.$f['id_user'])?>" class="btn btn-primary">Lihat</a>
+        <div class="row" style="padding-top: 30px;">
+          <?php
+          if (empty($user)) {
+                  echo  "<div class='col-md-12 text-center' ><h3><b>Tidak Memiliki Resep</b></h3></div>";
+          }
+          foreach ($user as $u): ?>
+
+          <div class="col-6 text-center">
+            <div class="card">
+              <img class="card-img-top" src="/resepmu/application/assets/img/resep/<?php if (isset($u['resep_foto'])) {
+                echo $u['resep_foto'];}?>" alt="Card image cap">
+              <div class="card-body">
+                <a href="<?php echo base_url('/resep/halaman_resep/'.$u["id_resep"])?>"><h4 class="card-title"><?php if (isset($u['nama_resep'])) {
+                  echo $u['nama_resep'];}?></h4></a>
+                <p class="card-text nama"><?php if (isset($u['username'])) {
+                  echo $u['username'];}?></p>
+                <p class="card-text create"><small class="text-muted">Dibuat: <?php if (isset($u['create_add'])) {
+                  echo $u['create_add'];}?></small></p>
               </div>
             </div>
-            <hr>
-            <?php }?>
-
-
+          </div>
+          <?php endforeach; ?>
         </div>
+        <div class="row justify-content-center" style="padding-top:30px;">
+            <?php echo $halaman;?>
         </div>
-      </div>
     </div>
   </div>
 </body>
-</html>
