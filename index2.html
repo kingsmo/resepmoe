@@ -1,33 +1,12 @@
 <html> 
   <head> 
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script> 
-    <script type="text/javascript">
-    $(function(){
-      var layout = './views/layout/';
-      var guest = './views/guest/';
-      var member = './views/member/';
-      var header = $('[data-header]');
-      jQuery.each(header, function(){
-        var file = layout + $(this).data('header') + '.html';
-        $(this).load(file);
-      });
-      var body = $('[data-body]');
-      jQuery.each(body, function(){
-        var file = guest + $(this).data('body') + '.html';
-        $(this).load(file);
-      });
-      var footer = $('[data-footer]');
-      jQuery.each(footer, function(){
-        var file = layout + $(this).data('footer') + '.html';
-        $(this).load(file);
-      });
-    });
-  </script> 
+    <script src="./js/page-all.js"></script> 
   </head> 
 
   <body> 
-     <div data-header="guest_header"></div>
-     <div data-body="halamanutama"></div>
-     <div data-footer="footer"></div>
+     <div data-header="guest_header" data-type="layout"></div>
+     <div data-body="halamanutama" data-type="guest"></div>
+     <div data-footer="footer" data-type="layout"></div>
   </body> 
 </html>
