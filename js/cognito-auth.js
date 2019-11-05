@@ -1,6 +1,6 @@
-/*global WildRydes _config AmazonCognitoIdentity AWSCognito*/
+/*global Resepmoe _config AmazonCognitoIdentity AWSCognito*/
 
-var WildRydes = window.WildRydes || {};
+var Resepmoe = window.Resepmoe || {};
 
 (function scopeWrapper($) {
     var signinUrl = 'signin.html';
@@ -25,11 +25,11 @@ var WildRydes = window.WildRydes || {};
         AWSCognito.config.region = _config.cognito.region;
     }
 
-    WildRydes.signOut = function signOut() {
+    Resepmoe.signOut = function signOut() {
         userPool.getCurrentUser().signOut();
     };
 
-    WildRydes.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
+    Resepmoe.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
         var cognitoUser = userPool.getCurrentUser();
 
         if (cognitoUser) {
@@ -111,16 +111,17 @@ var WildRydes = window.WildRydes || {};
     });
 
     function handleSignin(event) {
-        var email = $('#emailInputSignin').val();
+        var username = $('#usernameInputSignin').val();
         var password = $('#passwordInputSignin').val();
         event.preventDefault();
-        signin(email, password,
-            function signinSuccess() {
-                console.log('Successfully Logged In');
-                window.location.href = 'ride.html';
+        signin(username, password,
+            function signinSuccess(result) {
+                //console.log('Successfully Logged In');
+                alert('Success');
+                //window.location.href = '../member/halamanutama.html';
             },
             function signinError(err) {
-                alert(err);
+                alert('GAGAL');
             }
         );
     }
