@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<style media="screen">
+  img .card-img-top {
+    height: 50%;
+  }
+
+  .anyClass1 {
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+
+  .sidebar-collapse .navbar-collapse:before {
+    background: linear-gradient(#f96332 100%, #fff 90%) !important;
+  }
+
+  .anyClass {
+    height: 800px;
+    overflow-y: scroll;
+  }
+
+  @media (max-width: 992px) {
+    .title {
+      margin-top: 70px;
+    }
+
+    .anyClass {
+      height: 800px;
+      overflow-y: scroll;
+    }
+  }
+</style>
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76"
+    href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/img/apple-icon.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <link rel="icon" type="image/png" href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Resep Masakmu
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/themes/fontawesome-stars-o.css"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!-- CSS Files -->
+  <link href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/demo/demo.css" rel="stylesheet" />
+  <link href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/sweetalert/sweetalert.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg fixed-top bg-primary">
+      <div class="container ">
+        <div class="navbar-translate">
+          <a style="font-size:15px;" class="navbar-brand"
+            href="https://resepmoe.s3.us-east-2.amazonaws.com/views/member/halamanutama.html">RESEP•MU</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="fa fa-bars" style="color:white"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="https://resepmoe.s3.us-east-2.amazonaws.com/views/member/halamanutama.html">Home<span
+                  class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="dropdown-toogle nav-link" id="dropdown01" data-toggle="dropdown" href="#">Notification <div
+                  class="badge badge-primary">1
+                </div> </a>
+              <div class="dropdown-menu anyClass1" aria-labelledby="dropdown01">
+                <a class="dropdown-item" href="https://resepmoe.s3.us-east-2.amazonaws.com/views/member/halamanresep.html">
+                  <p>4-11-2019 12:23:22<br />
+                    wunsel mengomentari resep anda.</p>
+                </a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle fa fa-user-circle" href="#" id="navbarDropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item"
+                  href="https://resepmoe.s3.us-east-2.amazonaws.com/views/member/halamanprofile.html">Profile</a>
+                <a class="dropdown-item" href="https://resepmoe.s3.us-east-2.amazonaws.com/views/layout/login.html">Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!--   Core JS Files -->
+  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/core/jquery.min.js"
+    type="text/javascript"></script>
+  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/core/popper.min.js"
+    type="text/javascript"></script>
+  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/jquery.barrating.min.js"
+    type="text/javascript"></script>
+  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/core/bootstrap.min.js"
+    type="text/javascript"></script>
+  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/plugins/bootstrap-switch.js"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/plugins/nouislider.min.js"
+    type="text/javascript"></script>
+  <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
+  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/plugins/bootstrap-datepicker.js"
+    type="text/javascript"></script>
+  <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
+  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/now-ui-kit.js?v=1.3.0"
+    type="text/javascript"></script>
+  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/sweetalert/sweetalert.min.js"></script>
+  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/sweetalert/jquery.sweet-alert.custom.js"></script>
+</body>
+
+<body class="login-page sidebar-collapse">
+  <div class="page-header clear-filter" filter-color="orange">
+    <div class="page-header-image" style="background-image:url(/resepmu/application/assets/img/login.jpg)"></div>
+    <div class="content anyClass">
+      <div class="container">
+        <div class="col-md-4 ml-auto mr-auto">
+          <div class="card card-login card-plain">
+            <form class="form" method="post" action="<?php echo base_url('resep/updateresep/'.$resep[0]['id_resep']);?>"
+              enctype="multipart/form-data">
+              <div class="card-header text-center">
+                <h1 class="title">
+                  <a>Tulis Resepmu</a>
+                </h1>
+              </div>
+              <div class="card-body">
+                <div class="input-group no-border input-lg">
+                  <input type="text" class="form-control" id="nama_resep" name="nama_resep"
+                    placeholder="Masukkan Nama Resep" value="<?php echo $resep[0]['nama_resep'] ?>" required />
+                </div>
+                <div class="input-group no-border input-lg">
+                  <input type="number" class="form-control" id="durasi" name="durasi"
+                    placeholder="Masukkan Lama Durasi Memasak (Menit)" value="<?php echo $resep[0]['durasi'] ?>"
+                    required />
+
+                </div>
+                <div class="input-group no-border input-lg">
+                  <input type="number" class="form-control" id="porsi" name="porsi"
+                    placeholder="Masukkan Jumlah Porsi Makanan" value="<?php echo $resep[0]['porsi'] ?>" required />
+                </div>
+                <div class="input_field_wrapper">
+                  <div class="input-group no-border input-lg">
+                    <input type="text" placeholder="Masukkan Bahan Makanan" class="form-control" id="inputBahan" />
+                    <a href="javascript:void(0);" class="add_button" title="Add field"><button class=" btn btn-primary"
+                        style=" margin:5px;">+</button></a>
+                  </div>
+                  <div class="inp1">
+
+                  </div>
+                </div>
+                <div class="input_field_wrapper1">
+                  <div class="input-group no-border input-lg">
+                    <input type="text" placeholder="Masukkan Langkah Memasak" class="form-control" id="inputLangkah" />
+                    <a href="javascript:void(1);" class="add_button1" title="Add field"><button class=" btn btn-primary"
+                        style=" margin:5px;">+</button></a>
+                  </div>
+                  <div class="inp">
+
+                  </div>
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span style="width:75px; height:32px; font-size:8px;" class="input-group-text"
+                      id="inputGroupFileAddon01">Upload Foto</span>
+                  </div>
+                  <div class="custom-file">
+                    <input accept="image/*" type="file" id="resep_foto" name="resep_foto" class="custom-file-input"
+                      id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                    <label style="font-size:12px;" class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer text-center">
+                <button type="submit" id="unggah" class="btn btn-primary btn-round btn-lg btn-block">Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+  $(document).ready(function () {
+    var maxFieldLimit = 10; //Input fields increment limitation
+    var add_more_button = $('.add_button'); //Add button selector
+    var Fieldwrapper = $('.inp1'); //Input field wrapper
+    var test2 = '<?php echo $resep[0]['bahan_makanan'];?>'.split(", ");
+    var x = 1; //Initial field counter is 1
+    var item = test2;
+    refreshItem1(item);
+
+    function refreshItem1(arrItem) {
+      $('.inp1').html("");
+      for (var i = 0; i < arrItem.length; i++) {
+        var fieldHTML = '<div class="inp1 input-group no-border input-lg"><input type="text" class="bahan_makanan form-control" name="bahan_makanan[]" value="' + arrItem[i] + '" required /><a href="javascript:void(1);" class="remove_button" title="Remove field"><button class=" btn btn-primary" style=" margin:5px;">-</button></a></div>';
+        $(Fieldwrapper).append(fieldHTML);
+      }
+    }
+
+    $(add_more_button).click(function (e) { //Once add button is clicked
+      e.preventDefault();
+      x++; //Increment field counter
+      //$(Fieldwrapper).append(fieldHTML); // Add field html
+      item.push($('#inputBahan').val());
+      refreshItem1(item);
+      document.getElementById('inputBahan').value = '';
+
+    });
+    $(Fieldwrapper).on('click', '.remove_button', function (e) { //Once remove button is clicked
+      e.preventDefault();
+      $(this).parent('div').remove(); //Remove field html
+      item.remove($(this).prev().val());
+      refreshItem1(item);
+      x--; //Decrement field counter
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    var maxFieldLimit = 10; //Input fields increment limitation
+    var add_more_button = $('.add_button1'); //Add button selector
+    var test = '<?php echo $resep[0]['langkah_memasak'];?>'.split("| ");
+    var Fieldwrapper = $('.inp'); //Input field wrapper
+    //New input field html
+    var x = 1; //Initial field counter is 1
+    var item = test;
+    refreshItem(item);
+    function refreshItem(arrItem) {
+      $('.inp').html("");
+      for (var i = 0; i < arrItem.length; i++) {
+        var fieldHTML = '<div class="inp input-group no-border input-lg"><div class="input-group-prepend"><span class="input-group-text">' + (i + 1) + "." + '</span></div><input type="text" class="langkah_memasak form-control" name="langkah_memasak[]" value="' + arrItem[i] + '" required /><a href="javascript:void(1);" class="remove_button" title="Remove field"><button class=" btn btn-primary" style=" margin:5px;">-</button></a></div>';
+        $(Fieldwrapper).append(fieldHTML);
+      }
+    }
+    $(add_more_button).click(function (e) { //Once add button is clicked
+      //if(x < maxFieldLimit){ //Check maximum number of input fields
+      e.preventDefault();
+      x++; //Increment field counter
+      //var fieldHTML = '<div class="input-group no-border input-lg"><div class="input-group-prepend"><span class="input-group-text">1.</span></div><input type="text" class="form-control" name="langkah_memasak" value="" required /><a href="javascript:void(1);" class="remove_button" title="Remove field"><button class=" btn btn-primary" style=" margin:5px;">-</button></a></div>';
+      item.push($('#inputLangkah').val());
+      refreshItem(item);
+
+      document.getElementById('inputLangkah').value = '';
+      //$(Fieldwrapper).append(fieldHTML); // Add field html
+      //}
+    });
+
+    $(Fieldwrapper).on('click', '.remove_button', function (e) { //Once remove button is clicked
+      e.preventDefault();
+      $(this).parent('div').remove(); //Remove field html
+      //console.log($(this).prev().val());
+      item.remove($(this).prev().val());
+      refreshItem(item);
+      x--; //Decrement field counter
+    });
+
+  });
+  Array.prototype.remove = function () {
+    var what, a = arguments, L = a.length, ax;
+    while (L && this.length) {
+      what = a[--L];
+      while ((ax = this.indexOf(what)) !== -1) {
+        this.splice(ax, 1);
+      }
+    }
+    return this;
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM loaded");
+    var elements = document.getElementsByTagName("INPUT");
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].oninvalid = function (e) {
+        if (e.target.validity.badInput) {
+          e.target.setCustomValidity("Masukan harus angka");
+          return;
+        }
+        if (e.target.validity.valueMissing) {
+          e.target.setCustomValidity("Data tidak boleh kosong");
+          return;
+        }
+
+      };
+      elements[i].oninput = function (e) {
+        e.target.setCustomValidity("");
+      };
+    }
+  })
+</script>

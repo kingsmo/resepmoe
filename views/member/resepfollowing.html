@@ -232,12 +232,12 @@
   <div class="wrapper">
     <div class="page-header page-header-small">
       <div class="page-header-image" data-parallax="true"
-        style="background-image: url('https://resepmoe.s3.us-east-2.amazonaws.com/assets/img/backgroundutama1.jpg');">
+        style="background-image: url('/resepmu/application/assets/img/backgroundutama1.jpg');">
       </div>
       <div class="content-center">
         <div class="container">
           <h1 class="title">Solusi resep masakan.</h1>
-          <h4 style="" class="title">bingung mencari resep sesuai dengan bahan yang dimiliki? cari disini!</h4>
+          <h4 class="title">bingung mencari resep sesuai dengan bahan yang dimiliki? cari disini!</h4>
           <!-- berdasarkan bahan makanan -->
           <form class="" action="<?php echo base_url('resep/search');?>" method="get">
             <div class="text-center">
@@ -267,23 +267,23 @@
 
           <div class="input-group no-border input-lg crnm">
             <div class="input-group-prepend">
-              <span style="" class="input-group-text resepuname">
+              <span class="input-group-text resepuname">
                 <i class="fa fa-user-circle"></i>
               </span>
             </div>
             <input type="text" value="" placeholder="Masukkan nama resep atau username..." class="form-control uname"
               name="cari" />
-            <button style="" type="submit" class="btn btn-primary btn-round cr">Search</button>
+            <button type="submit" class="btn btn-primary btn-round cr">Search</button>
           </div>
 
         </form>
+
         <div class="row">
-          <div class="col-12">
+          <div class="col-12 text-right">
             <?php if (isset($_SESSION['id_user'])) : ?>
             <a href="<?php echo base_url('resep/tambahresep');?>" class="btn btn-primary btn-round float-right">+ Tambah
               Resep</a>
             <?php endif ?>
-
           </div>
         </div>
         <div class="row">
@@ -301,7 +301,7 @@
             <a href="<?php echo base_url('resep/getPopuler');?>" class="btn btn-primary btn-round">Populer</a>
           </div>
           <div class="text-center col-md-12 col-sm-12">
-            <h1 class="title" style="color:#2c2c2c; margin-top:0;">Terbaru</h1>
+            <h1 class="title" style="color:#2c2c2c; margin-top:0;">Following</h1>
           </div>
 
           <?php
@@ -314,13 +314,22 @@
             <a href="<?php echo base_url('resep/getPopuler');?>" class="btn btn-primary btn-round">Populer</a>
           </div>
           <div class="text-center col-md-12 col-sm-12">
-            <h1 class="title" style="color:#2c2c2c; margin-top:0;">Terbaru</h1>
+            <h1 class="title" style="color:#2c2c2c; margin-top:0;">Following</h1>
           </div>
           <?php }?>
-          <?php foreach($resep as $h){ ?>
+          <?php foreach ($resep as $h) { ?>
           <div class="col-md-3 col-sm-3 col-6 text-center">
-            <div class="card" id="card">
-              
+            <div class="card">
+              <img class="card-img-top" style="height:50%;"
+                src="/resepmu/application/assets/img/resep/<?=$h["resep_foto"]?>" alt="Card image cap">
+              <div class="card-body text-center" style="padding-top: 0px;">
+                <h4 class="card-title" style="margin-top: 10px;"><?php echo $h["nama_resep"]?></h4>
+                <a href="<?php echo base_url('/user/profile/'.$h["username"].'/'.$h["id_user"])?>">
+                  <p class="category text-primary"><?php echo $h["username"]?></p>
+                </a><br>
+                <a href="<?php echo base_url('/resep/halaman_resep/'.$h["id_resep"])?>"
+                  class="btn btn-primary btn-lihat" style="margin-top: 0px;">Lihat</a>
+              </div>
             </div>
           </div>
           <?php  } ?>
@@ -332,26 +341,3 @@
     </div>
   </div>
 </body>
-
-<script type="text/javascript">
-    var api_terbaru = 'https://lk4jug73y1.execute-api.us-east-2.amazonaws.com/api/resep';
-
-    $(document).ready(function(){
-      $.ajax({
-        type: 'GET',
-        url: api_terbaru,
-
-        success:function(data){
-          $('#card').html('');
-          data.Items.forEach(function(e){
-            $('#card').append('<img class="card-img-top" id="resep_foto" style="height:50%;" src="'+e.resep_foto+'" alt="Card image cap">');
-            $('#card').append('<div class="card-body text-center" id="nama_resep" style="padding-top: 0px;">');
-            $('#card').append('<h4 class="card-title" style="margin-top: 10px;">'+e.nama_resep+'</h4>');
-            $('#card').append('<a href="" id="username"><p class="category text-primary">'+e.id_user+'</p></a><br>');
-            $('#card').append('<a href="" class="btn btn-primary" style="margin-top: 0px;">Lihat</a></div>');
-          })
-        }
-      });
-    });
-</script>
-</html>
