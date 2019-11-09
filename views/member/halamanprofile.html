@@ -49,7 +49,7 @@ $(function(){
 });
 </script>
 <script type="text/javascript">
-  var api_resep = 'https://lk4jug73y1.execute-api.us-east-2.amazonaws.com/api/resep/?username=';
+  var api_resep = 'https://lk4jug73y1.execute-api.us-east-2.amazonaws.com/api/resep?username=';
   var api_user = 'https://lk4jug73y1.execute-api.us-east-2.amazonaws.com/api/user/';
   var append = '';
 
@@ -78,13 +78,14 @@ $(function(){
                 append = append + '<p class="card-text nama">'+data2.Attributes[4].Value+'</p>';
                 append = append + '<p class="card-text create"><small class="text-muted">Dibuat: '+e.created_at+'</small></p>';
                 append = append + '</div></div></div>';
+                $('#card').append(append);
               }
             })
           })
         } else {
           append = append + '<div class="col-md-12 text-center" ><h3><b>Tidak Memiliki Resep</b></h3></div>';
+          $('#card').append(append);
         }
-        $('#card').append(append);
       }
     })
   })
@@ -167,29 +168,7 @@ $(function(){
           </form>
         <?php }?> -->
         </div>
-        <div id="card" class="row" style="padding-top: 30px;">
-          <?php
-          if (empty($user)) {
-                  echo  "<div class='col-md-12 text-center' ><h3><b>Tidak Memiliki Resep</b></h3></div>";
-          }
-          foreach ($user as $u): ?>
-
-          <div class="col-6 text-center">
-            <div class="card">
-              <img class="card-img-top" src="/resepmu/application/assets/img/resep/<?php if (isset($u['resep_foto'])) {
-                echo $u['resep_foto'];}?>" alt="Card image cap">
-              <div class="card-body">
-                <a href="<?php echo base_url('/resep/halaman_resep/'.$u["id_resep"])?>"><h4 class="card-title"><?php if (isset($u['nama_resep'])) {
-                  echo $u['nama_resep'];}?></h4></a>
-                <p class="card-text nama"><?php if (isset($u['username'])) {
-                  echo $u['username'];}?></p>
-                <p class="card-text create"><small class="text-muted">Dibuat: <?php if (isset($u['create_add'])) {
-                  echo $u['create_add'];}?></small></p>
-              </div>
-            </div>
-          </div>
-          <?php endforeach; ?>
-        </div>
+        <div id="card" class="row" style="padding-top: 30px;"></div>
         <div class="row justify-content-center" style="padding-top:30px;">
             <?php echo $halaman;?>
         </div>
