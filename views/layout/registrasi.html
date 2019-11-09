@@ -1,93 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<style media="screen">
-  img .card-img-top{
-    height:50%;
-  }
-  .anyClass1 {
-  max-height:500px;
-  overflow-y: scroll;
-  }
-  .sidebar-collapse .navbar-collapse:before{
-    background:linear-gradient(#f96332 100%, #fff 90%) !important;
-  }
-</style>
 <style>
-  @media (max-width: 992px) {
-    #jenis_kelamin > option {
-       font-size: 10px;
-    }
+    @media (max-width: 992px) {
+      #jenis_kelamin > option {
+         font-size: 10px;
+      }
 
-  }
+    }
 </style>
 
-<head>
-  <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/img/apple-icon.png">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <link rel="icon" type="image/png" href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/img/favicon.png">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-    Resep Masakmu
-  </title>
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/themes/fontawesome-stars-o.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <!-- CSS Files -->
-  <link href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/demo/demo.css" rel="stylesheet" />
-  <link href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/sweetalert/sweetalert.css" rel="stylesheet">
-</head>
-
-<body>
-  <header>
-  <nav class="navbar navbar-expand-lg fixed-top bg-primary">
-      <div class="container ">
-        <div class="navbar-translate">
-          <a style="font-size:15px;" class="navbar-brand" href="https://resepmoe.s3.us-east-2.amazonaws.com/views/guest/halamanutama.html">RESEP•MU</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="fa fa-bars" style="color:white"></span>
-          </button>
-        </div>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="https://resepmoe.s3.us-east-2.amazonaws.com/views/layout/login.php">Login<span class="sr-only">(current)</span></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-  <!--   Core JS Files -->
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/jquery.barrating.min.js" type="text/javascript"></script>
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/plugins/bootstrap-switch.js"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-  <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
-  <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/now-ui-kit.js?v=1.3.0" type="text/javascript"></script>
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/sweetalert/sweetalert.min.js"></script>
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/sweetalert/jquery.sweet-alert.custom.js"></script>
-</body>
+<script src="js/amazon-cognito-auth.min.js"></script>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script> 
+<script src="js/amazon-cognito-identity.min.js"></script>  
+<script src="js/config.js"></script>
 
 <body class="sidebar-collapse">
   <div class="section section-signup" style="background-image: url('/resepmu/application/assets/img/bg11.jpg'); background-size: cover; background-position: top center; min-height: 700px;">
     <div class="container">
       <div class="row">
         <div class="card card-signup" data-background-color="orange" style="opacity:0.96">
-          <form class="form" method="post" action="<?php echo base_url('user/registrasi');?>" enctype="multipart/form-data">
+          <form class="form">
             <div class="card-header text-center">
               <h3 class="card-title title-up">Daftar</h3>
             </div>
@@ -98,7 +28,7 @@
                     <i class="fa fa-user-circle"></i>
                   </span>
                 </div>
-                <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama" required>
+                <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" required>
               </div>
               <div>
                 <i class="fa fa-venus-mars"></i>
@@ -114,7 +44,7 @@
                     <i class="fa fa-user-circle"></i>
                   </span>
                 </div>
-                <input type="text" name="username" placeholder="Masukkan Username" class="form-control" required />
+                <input type="text" name="username" id="uname" placeholder="Masukkan Username" class="form-control" required />
               </div>
               <div class="input-group no-border">
                 <div class="input-group-prepend">
@@ -122,7 +52,7 @@
                     <i class="fa fa-lock"></i>
                   </span>
                 </div>
-                <input type="password" name="password" class="form-control" placeholder="Masukkan Password" required>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan Password" required>
               </div>
               <div class="input-group no-border">
                 <div class="input-group-prepend">
@@ -130,7 +60,7 @@
                     <i class="fa fa-envelope"></i>
                   </span>
                 </div>
-                <input type="text" class="form-control" name="email" placeholder="Masukkan Email" oninvalid="if (this.value == ''){this.setCustomValidity('This field is required!')} if (this.value != ''){this.setCustomValidity('The email you entered is invalid!')}" oninput="setCustomValidity('')" required="">
+                <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan Email" oninvalid="if (this.value == ''){this.setCustomValidity('This field is required!')} if (this.value != ''){this.setCustomValidity('The email you entered is invalid!')}" oninput="setCustomValidity('')" required="">
               </div>
               <div class="input-group no-border">
                 <div class="input-group-prepend">
@@ -138,9 +68,9 @@
                     <i class="fa fa-phone"></i>
                   </span>
                 </div>
-                <input type="number" class="form-control" name="nomor_telepon" placeholder="Masukkan Nomor Telepon" required>
+                <input type="number" class="form-control" name="nomor_telepon" id="nomortelepon" placeholder="Masukkan Nomor Telepon" required>
               </div>
-              <div class="input-group">
+<!--               <div class="input-group">
                 <div class="input-group-prepend">
                   <span style="width:75px; height:32px; font-size:8px;" class="input-group-text" id="inputGroupFileAddon01">Upload Foto</span>
                 </div>
@@ -149,9 +79,9 @@
                   <label style="font-size:12px;" class="custom-file-label" for="inputGroupFile01">Choose file</label>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="card-footer text-center">
-              <button type="submit" class="btn btn-neutral btn-round btn-lg">Daftar</button>
+              <button type="submit" class="btn btn-neutral btn-round btn-lg" onclick="registerButton()">Daftar</button>
             </div>
           </form>
         </div>
@@ -180,4 +110,74 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     }
 })
+
+		var nama;
+		var gender;
+		var username;
+		var password;
+		var nomor_telepon;
+    var email;
+
+  	var poolData;	
+	  function registerButton() {
+		
+		
+		username = document.getElementById("uname").value;	
+		password =  document.getElementById("password").value;
+
+    nama =  document.getElementById("nama").value;  	
+		gender =  document.getElementById("jenis_kelamin").value;
+    phone_number = document.getElementById("nomortelepon").value;
+    email = document.getElementById("email").value;
+    
+
+		poolData = {
+				UserPoolId : _config.cognito.userPoolId, //<<--- POOL ID SAMA CLIENT ID NYA
+				ClientId : _config.cognito.clientId 	 //<<--- POOL ID SAMA CLIENT ID NYA
+			};		
+		var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+		var attributeList = [];
+		
+		
+		var dataPersonalName = {
+			Name : 'name', 
+			Value : nama, //get from form field
+		};
+    var dataEmail = {
+      Name : 'email', 
+      Value : email, //get from form field
+    };
+    
+    var dataGender = {
+      Name : 'gender', 
+      Value : gender, //get from form field
+    };
+
+        var dataPhoneNumber = {
+      Name : 'nomortelepon', 
+      Value : phone_number, //get from form field
+    };
+
+
+		var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataUser);
+		var attributePersonalName = new AmazonCognitoIdentity.CognitoUserAttribute(dataPersonalName);
+		var attributeGender = new AmazonCognitoIdentity.CognitoUserAttribute(dataGender);
+    var attributePhoneNumber = new AmazonCognitoIdentity.CognitoUserAttribute(dataPhoneNumber);
+		
+		attributeList.push(attributeEmail);
+		attributeList.push(attributePersonalName);
+    attributeList.push(attributeGender);
+    attributeList.push(attributePhoneNumber);
+
+
+		userPool.signUp(username, password, attributeList, null, function(err, result){
+			if (err) {
+				alert(err.message || JSON.stringify(err));
+				return;
+			}
+			cognitoUser = result.user;
+			// console.log('user name is ' + cognitoUser.getUsername());
+		});
+	  }
 </script>
