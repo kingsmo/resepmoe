@@ -1,7 +1,7 @@
     $(function(){
-      var layout = './views/layout/';
-      var guest = './views/guest/';
-      var member = './views/member/';
+      var layout = 'https://resepmoe.s3.us-east-2.amazonaws.com/views/layout/';
+      var guest = 'https://resepmoe.s3.us-east-2.amazonaws.com/views/guest/';
+      var member = 'https://resepmoe.s3.us-east-2.amazonaws.com/views/member/';
       
       var header = $('[data-header]');
       jQuery.each(header, function(){
