@@ -56,7 +56,41 @@ $(function(){
   $(document).ready(function(){
     $.ajax({
       type:'GET',
-      url: api_resep + 'chalifnurfaizi',
+      url: api_resep + 'ekky',
+
+      success:function(data){
+        if(data != ''){
+          $('#card').html('');
+
+          data.forEach(function(e){
+            append = '';
+            append = append + '<div class="col-6 text-center">';
+            append = append + '<div class="card">';
+            append = append + '<img class="card-img-top" id="resep_foto" style="height:50%;" src="'+e.resep_foto+'" alt="Card image cap">';
+            append = append + '<div class="card-body">';
+            append = append + '<a href=""><h4 class="card-title">'+e.nama_resep+'</h4></a>';
+            append = append + '<p class="card-text nama">'+data2.Attributes[4].Value+'</p>';
+            append = append + '<p class="card-text create"><small class="text-muted">Dibuat: '+e.created_at+'</small></p>';
+            append = append + '</div></div></div>';
+            $('#card').append(append);
+          })
+        } else {
+          append = append + '<div class="col-md-12 text-center" ><h3><b>Tidak Memiliki Resep</b></h3></div>';
+          $('#card').append(append);
+        }
+      }
+    })
+  })
+</script>
+<script type="text/javascript">
+  var api_resep = 'https://lk4jug73y1.execute-api.us-east-2.amazonaws.com/api/resep?username=';
+  var api_user = 'https://lk4jug73y1.execute-api.us-east-2.amazonaws.com/api/user/';
+  var append = '';
+
+  $(document).ready(function(){
+    $.ajax({
+      type:'GET',
+      url: api_resep + 'ekky',
 
       success:function(data){
         if(data != ''){
@@ -78,13 +112,14 @@ $(function(){
                 append = append + '<p class="card-text nama">'+data2.Attributes[4].Value+'</p>';
                 append = append + '<p class="card-text create"><small class="text-muted">Dibuat: '+e.created_at+'</small></p>';
                 append = append + '</div></div></div>';
+                $('#card').append(append);
               }
             })
           })
         } else {
           append = append + '<div class="col-md-12 text-center" ><h3><b>Tidak Memiliki Resep</b></h3></div>';
+          $('#card').append(append);
         }
-        $('#card').append(append);
       }
     })
   })
