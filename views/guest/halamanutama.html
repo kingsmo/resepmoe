@@ -150,10 +150,10 @@
           <div class="text-center col-md-12 col-sm-12">
             <h1 class="title" style="color:#2c2c2c; margin-top:0;">Terbaru</h1>
           </div>
-
-          <?php foreach($resep as $h){ ?>
-          <div class="col-md-3 col-sm-3 col-6 text-center">
-            <div class="card">
+        </div>
+        <div class="row" id="card">
+          
+            
               <img class="card-img-top" style="height:50%;" src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/img/resep/<?=$h["resep_foto"]?>" alt="Card image cap">
               <div class="card-body text-center" style="padding-top: 0px;">
                 <h4 class="card-title" style="margin-top: 10px;"><?php echo $h["nama_resep"]?></h4>
@@ -162,12 +162,38 @@
               </div>
             </div>
           </div>
-          <?php  } ?>
         </div>
+
         <div class="row justify-content-center" style="padding-top:30px;">
             <?php echo $halaman;?>
         </div>
       </div>
     </div>
   </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript">
+    var api_terbaru = 'https://lk4jug73y1.execute-api.us-east-2.amazonaws.com/api/resep';
+
+    $(document).ready(function(){
+      $.ajax({
+        type: 'GET',
+        url: api_terbaru,
+
+        success:function(data){
+          $('#card').html('');
+          data.Items.forEach(function(e){
+            $('#card').append('<div class="col-md-3 col-sm-3 col-6 text-center">'
+              +'<div class="card">'
+              +'<img class="card-img-top" id="resep_foto" style="height:50%;" src="'+e.resep_foto+'" alt="Card image cap">'
+              +'<div class="card-body text-center" id="nama_resep" style="padding-top: 0px;">'
+              +'<h4 class="card-title" style="margin-top: 10px;">'+e.nama_resep+'</h4>'
+              +'<a href="" id="username"><p class="category text-primary">'+e.id_user+'</p></a><br>'
+              +'<a href="" class="btn btn-primary" style="margin-top: 0px;">Lihat</a></div>'
+              );
+          })
+        }
+      });
+    });
+</script>
 </body>
