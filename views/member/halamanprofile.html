@@ -56,28 +56,25 @@ $(function(){
   $(document).ready(function(){
     $.ajax({
       type:'GET',
-      url: api_resep + 'ekky',
+      url: api_resep + 'chalifnurfaizi',
 
       success:function(data){
-        if(data != ''){
-          $('#card').html('');
-
-          data.forEach(function(e){
-            append = '';
-            append = append + '<div class="col-6 text-center">';
-            append = append + '<div class="card">';
-            append = append + '<img class="card-img-top" id="resep_foto" style="height:50%;" src="'+e.resep_foto+'" alt="Card image cap">';
-            append = append + '<div class="card-body">';
-            append = append + '<a href=""><h4 class="card-title">'+e.nama_resep+'</h4></a>';
-            append = append + '<p class="card-text nama">'+data2.Attributes[4].Value+'</p>';
-            append = append + '<p class="card-text create"><small class="text-muted">Dibuat: '+e.created_at+'</small></p>';
-            append = append + '</div></div></div>';
-            $('#card').append(append);
-          })
-        } else {
-          append = append + '<div class="col-md-12 text-center" ><h3><b>Tidak Memiliki Resep</b></h3></div>';
-          $('#card').append(append);
-        }
+        $('#profile').html('');
+        append = '';
+        append = append + '<div class="photo-container"><img src="'+data.Attributes[9].Value+'" alt=""></div>';
+        append = append + '<h3 class="title" style="margin-top: 0px; margin-bottom: 0px;">'+data.Attributes[4].Value;
+        // if session tampilkan ini
+        append = append + '<a href="./editprofile.html"><span class="fa fa-edit"></span></a></h3>';
+        append = append + '<div class="row justify-content-center">';
+        append = append + '<p style="margin-top: 0px; margin-bottom: 0px; padding-top:10px; padding-right:10px;">'+data.Username+'</p>';
+        append = append + '<p style="margin-top: 0px; margin-bottom: 0px; padding-top:10px; padding-left:10px;">'+data.Attributes[3].Value+'</p></div>';
+        append = append + '<div class="content"><a href="./halamanprofile.html"><div class="social-description col-4" style="color:white;">';
+        append = append + '<h2>jumlahresep</h2><p>Resep</p></div></a>';
+        append = append + '<a href="halaman mengikuti"><div class="social-description col-4" style="color:white;">';
+        append = append + '<h2>jumlah mengikuti</h2><p>Mengikuti</p></div></a>';
+        append = append + '<a href="halaman diikuti"><div class="social-description col-4" style="color:white;">';
+        append = append + '<h2>jumlah diikuti</h2><p>Diikuti</p></div></a></div></div>';
+        $('#profile').append(append);
       }
     })
   })
@@ -130,52 +127,9 @@ $(function(){
 
   <div class="wrapper">
     <div class="page-header clear-filter page-header-small" filter-color="orange">
-      <div class="page-header-image" data-parallax="true" style="background-image:url('/resepmu/application/assets/img/backgroundprofile.jpg');">
+      <div class="page-header-image" data-parallax="true" style="background-image:url('https://resepmoe.s3.us-east-2.amazonaws.com/assets/img/backgroundprofile.jpg');">
       </div>
-      <div class="container">
-        <div class="photo-container">
-          <img src="/resepmu/application/assets/img/user/<?=$profile[0]['user_foto']?>" alt="">
-        </div>
-        <h3 class="title" style="margin-top: 0px; margin-bottom: 0px;"><?php echo $profile[0]['nama']?>
-        <?php
-          if(isset($_SESSION['id_user'])){
-            if ($_SESSION['id_user']=== $profile[0]['id_user']){
-        ?>
-          <a href="<?php echo base_url("user/editprofile"); ?>"><span class="fa fa-edit"></span></a>
-        <?php
-            }
-          }
-        ?>
-
-
-        </h3>
-        <div class="row justify-content-center">
-          <p style="margin-top: 0px; margin-bottom: 0px; padding-top:10px; padding-right:10px;"><?php echo $profile[0]['username'] ?></p>
-          <p style="margin-top: 0px; margin-bottom: 0px; padding-top:10px; padding-left:10px;"><?php echo $profile[0]['jenis_kelamin']?></p>
-        </div>
-
-        <div class="content">
-          <a href="<?php echo base_url('/user/profile/'.$profile[0]['username'].'/'.$profile[0]['id_user'])?>">
-            <div class="social-description col-4" style="color:white;">
-              <h2><?php echo $total_rows?></h2>
-              <p>Resep</p>
-            </div>
-          </a>
-          <a href="<?php echo base_url('/teman/follow/'.$profile[0]['username'].'/'.$profile[0]['id_user'])?>">
-            <div class="social-description col-4" style="color:white;">
-              <h2><?php echo $total_rows_follow?></h2>
-              <p>Mengikuti</p>
-            </div>
-          </a>
-          <a href="<?php echo base_url('/teman/follower/'.$profile[0]['username'].'/'.$profile[0]['id_user'])?>">
-            <div class="social-description col-4" style="color:white;">
-              <h2><?php echo $total_rows_follower?></h2>
-              <p>Diikuti</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
+      <div id="profile" class="container"></div>
     <div class="section" style="padding-right:30px; padding-left:30px;">
       <div class="container">
         <div class="button-container">
