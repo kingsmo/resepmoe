@@ -89,8 +89,13 @@
 </style>
 
 <head>
-  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-  <script src="./js/page-all.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $("#header").load("https://resepmoe.s3.us-east-2.amazonaws.com/views/layout/guest_header.html");
+      $("#footer").load("https://resepmoe.s3.us-east-2.amazonaws.com/views/layout/footer.html");
+    });
+  </script>
   <script type="text/javascript">
     var api_resep = 'https://lk4jug73y1.execute-api.us-east-2.amazonaws.com/api/resep';
     var api_user = 'https://lk4jug73y1.execute-api.us-east-2.amazonaws.com/api/user/';
@@ -129,10 +134,7 @@
   </script>
 </head>
 
-<body> 
-  <div data-header="guest_header"></div>
-</body>
-
+<div id="header"></div>
 <body class="sidebar-collapse">
   <div class="wrapper">
     <div class="page-header page-header-small">
@@ -180,7 +182,7 @@
               <div class="row">
           <div class="col-12">
             <?php if (isset($_SESSION['id_user'])) : ?>
-              <a href="<?php echo base_url('resep/tambahresep');?>" class="btn btn-primary btn-round float-right">+ Tambah Resep</a>
+              <a href="./views/member/tambahresep.html" class="btn btn-primary btn-round float-right">+ Tambah Resep</a>
             <?php endif ?>
         </div>
       </div>
@@ -214,7 +216,5 @@
   </div>
 </body>
 
-<body>
-  <div data-footer="footer"></div>
-</body>
+<div id="footer"></div>
 </html>
