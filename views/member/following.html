@@ -1,181 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<style media="screen">
-  img .card-img-top {
-    height: 50%;
-  }
+<style>
+@media (max-width: 992px) {
+ .title {
+   margin-top: 70px;
+ }
 
-  .anyClass1 {
-    max-height: 500px;
-    overflow-y: scroll;
-  }
+ .social-description{
+   padding-left: 0px !important;
+   padding-right: 0px !important;
+   width: 100px !important;
+ }
+ .follow{
+   height: 60px;
+   width: 60px;
+ }
+ .tombol-lihat{
+   padding-left:50px !important;
+ }
+ .uname{
+   padding-left:10px;
+   width: 146px;
+ }
+}
+@media (min-width: 992px) {
+ .follow{
+   height: 70px;
+   width: 70px;
+ }
+ .tombol-lihat{
+   margin-left:700px;
+ }
+ .img-follow{
+   max-width:12% !important;
+    padding-right:0px !important;
+ }
+ .uname{
+   padding-left:10px;
+   width: 191px;
+ }
 
-  .sidebar-collapse .navbar-collapse:before {
-    background: linear-gradient(#f96332 100%, #fff 90%) !important;
-  }
+}
 
-  @media (max-width: 992px) {
-    .title {
-      margin-top: 70px;
-    }
 
-    .social-description {
-      padding-left: 0px !important;
-      padding-right: 0px !important;
-      width: 100px !important;
-    }
-
-    .follow {
-      height: 60px;
-      width: 60px;
-    }
-
-    .tombol-lihat {
-      padding-left: 50px !important;
-    }
-
-    .uname {
-      padding-left: 10px;
-      width: 146px;
-    }
-  }
-
-  @media (min-width: 992px) {
-    .follow {
-      height: 70px;
-      width: 70px;
-    }
-
-    .tombol-lihat {
-      margin-left: 700px;
-    }
-
-    .img-follow {
-      max-width: 12% !important;
-      padding-right: 0px !important;
-    }
-
-    .uname {
-      padding-left: 10px;
-      width: 191px;
-    }
-
-  }
 </style>
-
-<head>
-  <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76"
-    href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/img/apple-icon.png">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <link rel="icon" type="image/png" href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/img/favicon.png">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-    Resep Masakmu
-  </title>
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
-    name='viewport' />
-  <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/themes/fontawesome-stars-o.css"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <!-- CSS Files -->
-  <link href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/demo/demo.css" rel="stylesheet" />
-  <link href="https://resepmoe.s3.us-east-2.amazonaws.com/assets/sweetalert/sweetalert.css" rel="stylesheet">
-</head>
-
-<body>
-  <header>
-    <nav class="navbar navbar-expand-lg fixed-top bg-primary">
-      <div class="container ">
-        <div class="navbar-translate">
-          <a style="font-size:15px;" class="navbar-brand"
-            href="https://resepmoe.s3.us-east-2.amazonaws.com/views/member/halamanutama.html">RESEP•MU</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="fa fa-bars" style="color:white"></span>
-          </button>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="https://resepmoe.s3.us-east-2.amazonaws.com/views/member/halamanutama.html">Home<span
-                  class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="dropdown-toogle nav-link" id="dropdown01" data-toggle="dropdown" href="#">Notification <div
-                  class="badge badge-primary">1
-                </div> </a>
-              <div class="dropdown-menu anyClass1" aria-labelledby="dropdown01">
-                <a class="dropdown-item" href="https://resepmoe.s3.us-east-2.amazonaws.com/views/member/halamanresep.html">
-                  <p>4-11-2019 12:23:22<br />
-                    wunsel mengomentari resep anda.</p>
-                </a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle fa fa-user-circle" href="#" id="navbarDropdownMenuLink"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item"
-                  href="https://resepmoe.s3.us-east-2.amazonaws.com/views/member/halamanprofile.html">Profile</a>
-                <a class="dropdown-item" href="https://resepmoe.s3.us-east-2.amazonaws.com/views/layout/login.html">Logout</a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-  <!--   Core JS Files -->
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/core/jquery.min.js"
-    type="text/javascript"></script>
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/core/popper.min.js"
-    type="text/javascript"></script>
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/jquery.barrating.min.js"
-    type="text/javascript"></script>
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/core/bootstrap.min.js"
-    type="text/javascript"></script>
-  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/plugins/bootstrap-switch.js"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/plugins/nouislider.min.js"
-    type="text/javascript"></script>
-  <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/plugins/bootstrap-datepicker.js"
-    type="text/javascript"></script>
-  <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/js/now-ui-kit.js?v=1.3.0"
-    type="text/javascript"></script>
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/sweetalert/sweetalert.min.js"></script>
-  <script src="https://resepmoe.s3.us-east-2.amazonaws.com/assets/sweetalert/jquery.sweet-alert.custom.js"></script>
-</body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(function(){
+  $("#header").load("../layout/guest_header.html");
+  $("#footer").load("../layout/user_footer.html");
+});
+</script>
+<div id="header"></div>
 <body class="profile-page sidebar-collapse">
 
   <div class="wrapper">
     <div class="page-header clear-filter page-header-small" filter-color="orange">
-      <div class="page-header-image" data-parallax="true"
-        style="background-image:url('/resepmu/application/assets/img/backgroundprofile.jpg');">
+      <div class="page-header-image" data-parallax="true" style="background-image:url('/resepmu/application/assets/img/backgroundprofile.jpg');">
       </div>
       <div class="container">
         <div class="photo-container">
           <img src="/resepmu/application/assets/img/user/<?=$profile[0]['user_foto']?>" alt="">
         </div>
         <h3 class="title" style="margin-top: 0px; margin-bottom: 0px;"><?php echo $profile[0]['nama']?>
-          <?php
+        <?php
           if(isset($_SESSION['id_user'])){
             if ($_SESSION['id_user']=== $profile[0]['id_user']){
         ?>
           <a href="<?php echo base_url("user/editprofile"); ?>"><span class="fa fa-edit"></span></a>
-          <?php
+        <?php
             }
           }
         ?>
@@ -183,12 +74,10 @@
 
         </h3>
         <div class="row justify-content-center">
-          <p style="margin-top: 0px; margin-bottom: 0px; padding-top:10px; padding-right:10px;">
-            <?php echo $profile[0]['username'] ?></p>
-          <p style="margin-top: 0px; margin-bottom: 0px; padding-top:10px; padding-left:10px;">
-            <?php echo $profile[0]['jenis_kelamin']?></p>
+          <p style="margin-top: 0px; margin-bottom: 0px; padding-top:10px; padding-right:10px;"><?php echo $profile[0]['username'] ?></p>
+          <p style="margin-top: 0px; margin-bottom: 0px; padding-top:10px; padding-left:10px;"><?php echo $profile[0]['jenis_kelamin']?></p>
         </div>
-        <div class="content">
+      <div class="content">
           <a href="<?php echo base_url('/user/profile/'.$profile[0]['username'].'/'.$profile[0]['id_user'])?>">
             <div class="social-description text-center" style="color:white;">
               <h2><?php echo $total_rows?></h2>
@@ -216,55 +105,53 @@
           <?php
           if(isset($_SESSION['id_user'])){
             if ($_SESSION['id_user']=== $profile[0]['id_user']){?>
-          <form action="<?php echo base_url('/teman/follow/'.$profile[0]['username'].'/'.$profile[0]['id_user'])?>"
-            method="post">
-            <button class="btn btn-primary btn-round btn-lg">Ikuti</button>
-          </form>
-          <?php }else if($ikuti == 0){ ?>
-
+              <form action="<?php echo base_url('/teman/follow/'.$profile[0]['username'].'/'.$profile[0]['id_user'])?>" method="post">
+                <button class="btn btn-primary btn-round btn-lg">Ikuti</button>
+              </form>
+            <?php }else if($ikuti == 0){ ?>
+<!-- 
           <form action="<?php echo base_url('/teman/follow_action/'.$profile[0]['id_user'])?>" method="post">
             <input hidden name="username" value="<?php echo $profile[0]['username']?>"></input>
             <button class="btn btn-primary btn-round btn-lg">Ikuti</button>
           </form>
-          <?php }else{?>
+        <?php }else{?>
           <form action="<?php echo base_url('/teman/unfollow/'.$profile[0]['id_user'])?>" method="post">
             <input hidden name="username" value="<?php echo $profile[0]['username']?>"></input>
             <button class="btn btn-primary btn-round btn-lg">Berhenti Mengikuti</button>
           </form>
-          <?php }}else{ ?>
+        <?php }}else{ ?>
           <form action="<?php echo base_url('/user/login')?>" method="post">
             <button class="btn btn-primary btn-round btn-lg">Ikuti</button>
           </form>
-          <?php  }?>
+          <?php  }?> -->
         </div>
-        <div class="row" style="margin-top:40px">
-          <div class="card">
-            <div class="card-header col-md-12 text-center">
-              <h3 style="margin-bottom: 0px; margin-top:20px;">Mengikuti</h3>
-            </div>
-            <div class="card-body">
-              <?php foreach($follow as $f){ ?>
-              <div class="row" style=" padding:30px;">
-                <div class="img-follow text-center" id="foto-following">
-                  <img src="/resepmu/application/assets/img/user/<?=$f['user_foto']?>" alt="Circle Image"
-                    class="rounded-circle follow">
-                </div>
-                <div class="uname">
-                  <h4 class="card-title" style="margin-top: 0px; margin-bottom:0px;"><?php echo $f['username']?></h4>
-                  <p class="card-text"><?php echo $f['nama']?></p>
-                </div>
-                <div class="text-right tombol-lihat">
-                  <a href="<?php echo base_url('/user/profile/'.$f['username'].'/'.$f['id_user'])?>"
-                    class="btn btn-primary">Lihat</a>
-                </div>
-              </div>
-              <hr>
-              <?php }?>
-
-
-            </div>
+      <div class="row" style="margin-top:40px">
+        <div class="card">
+          <div class="card-header col-md-12 text-center">
+            <h3 style="margin-bottom: 0px; margin-top:20px;">Mengikuti</h3>
           </div>
+          <div class="card-body">
+            <?php foreach($follow as $f){ ?>
+            <div class="row" style=" padding:30px;">
+              <div class="img-follow text-center" id="foto-following">
+                <img src="/resepmu/application/assets/img/user/<?=$f['user_foto']?>" alt="Circle Image" class="rounded-circle follow" >
+              </div>
+              <div class="uname" style="">
+                <h4 class="card-title" style="margin-top: 0px; margin-bottom:0px;"><?php echo $f['username']?></h4>
+                <p class="card-text"><?php echo $f['nama']?></p>
+              </div>
+              <div class="text-right tombol-lihat" style="">
+                <a href="<?php echo base_url('/user/profile/'.$f['username'].'/'.$f['id_user'])?>" class="btn btn-primary">Lihat</a>
+              </div>
+            </div>
+            <hr>
+            <?php }?>
+
+
+        </div>
         </div>
       </div>
     </div>
+  </div>
 </body>
+<div id="footer"></div>
