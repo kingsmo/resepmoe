@@ -62,18 +62,18 @@ $(function(){
         $('#profile').html('');
         append = '';
         append = append + '<div class="photo-container"><img src="'+data.Attributes[9].Value+'" alt=""></div>';
-        append = append + '<h3 class="title" style="margin-top: 0px; margin-bottom: 0px;">'+data.Attributes[4].Value;
+        append = append + '<h3 class="title" style="margin-top: 0px; margin-bottom: 0px;">'+data.Attributes[4].Value;+' '
         // if session tampilkan ini
         append = append + '<a href="./editprofile.html"><span class="fa fa-edit"></span></a></h3>';
         append = append + '<div class="row justify-content-center">';
         append = append + '<p style="margin-top: 0px; margin-bottom: 0px; padding-top:10px; padding-right:10px;">'+data.Username+'</p>';
         append = append + '<p style="margin-top: 0px; margin-bottom: 0px; padding-top:10px; padding-left:10px;">'+data.Attributes[3].Value+'</p></div>';
         append = append + '<div class="content"><a href="./halamanprofile.html"><div class="social-description col-4" style="color:white;">';
-        append = append + '<h2>jumlahresep</h2><p>Resep</p></div></a>';
+        append = append + '<h2>3</h2><p>Resep</p></div></a>';
         append = append + '<a href="halaman mengikuti"><div class="social-description col-4" style="color:white;">';
-        append = append + '<h2>jumlah mengikuti</h2><p>Mengikuti</p></div></a>';
+        append = append + '<h2>0</h2><p>Mengikuti</p></div></a>';
         append = append + '<a href="halaman diikuti"><div class="social-description col-4" style="color:white;">';
-        append = append + '<h2>jumlah diikuti</h2><p>Diikuti</p></div></a></div>';
+        append = append + '<h2>0</h2><p>Diikuti</p></div></a></div>';
         $('#profile').append(append);
       }
     })
@@ -87,20 +87,20 @@ $(function(){
   $(document).ready(function(){
     $.ajax({
       type:'GET',
-      url: api_resep + 'ekky',
+      url: api_resep + 'chalifnurfaizi',
 
       success:function(data){
         if(data != ''){
           $('#card').html('');
 
           data.forEach(function(e){
-            append = '';
 
             $.ajax({
               type: 'GET',
               url: api_user + e.username,
 
               success:function(data2){
+                append = '';
                 append = append + '<div class="col-6 text-center">';
                 append = append + '<div class="card">';
                 append = append + '<img class="card-img-top" id="resep_foto" style="height:50%;" src="'+e.resep_foto+'" alt="Card image cap">';
