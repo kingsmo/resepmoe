@@ -45,8 +45,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 $(function(){
-  $("#header").load("../layout/guest_header.html");
-  $("#footer").load("../layout/user_footer.html");
+  $("#header").load("https://resepmoe.s3.us-east-2.amazonaws.com/layout/guest_header.html");
+  $("#footer").load("https://resepmoe.s3.us-east-2.amazonaws.com/layout/user_footer.html");
 });
 </script>
 <div id="header"></div>
@@ -109,7 +109,7 @@ $(function(){
                 <button class="btn btn-primary btn-round btn-lg">Ikuti</button>
               </form>
             <?php }else if($ikuti == 0){ ?>
-<!-- 
+<!--
           <form action="<?php echo base_url('/teman/follow_action/'.$profile[0]['id_user'])?>" method="post">
             <input hidden name="username" value="<?php echo $profile[0]['username']?>"></input>
             <button class="btn btn-primary btn-round btn-lg">Ikuti</button>
