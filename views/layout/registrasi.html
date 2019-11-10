@@ -8,7 +8,7 @@
   max-height:500px;
   overflow-y: scroll;
   }
-  .sidebar-collapse .navbar-collapse:before{
+  .sidebar-collapse .navbar-collapse{
     background:linear-gradient(#f96332 100%, #fff 90%) !important;
   }
 </style>
@@ -89,7 +89,7 @@
           <form class="form" method="post" action="<?php echo base_url('user/registrasi');?>" enctype="multipart/form-data">
             <div class="card-header text-center">
               <h3 class="card-title title-up">Daftar</h3>
-              <?php echo validation_errors('<div class="error">', '</div>'); ?>
+              <?php echo validation_errors('<div class="error"></div>
             </div>
             <div class="card-body">
               <div class="input-group no-border">
