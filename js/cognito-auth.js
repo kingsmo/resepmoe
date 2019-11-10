@@ -55,11 +55,40 @@ var Resepmoe = window.Resepmoe || {};
     function register(email, password, onSuccess, onFailure) {
         var dataEmail = {
             Name: 'email',
-            Value: email
+            Value: email,
         };
-        var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+        var dataPersonalName = {
+            Name : 'name', 
+            Value : nama, //get from form field
+        };
+        var dataGender = {
+          Name : 'gender', 
+          Value : gender, //get from form field
+        };
 
-        userPool.signUp(email, password, [attributeEmail], null,
+            var dataPhoneNumber = {
+          Name : 'nomortelepon', 
+          Value : phone_number, //get from form field
+        };
+        var dataPersonalName = {
+            Name : 'username', 
+            Value : username, //get from form field
+        };
+
+        var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+        var attributePersonalName = new AmazonCognitoIdentity.CognitoUserAttribute(dataPersonalName);
+        var attributeGender = new AmazonCognitoIdentity.CognitoUserAttribute(dataGender);
+        var attributePhoneNumber = new AmazonCognitoIdentity.CognitoUserAttribute(dataPhoneNumber);
+        var attributeUsername = new AmazonCognitoIdentity.CognitoUserAttribute(dataUsername);
+
+        attributeList.push(attributeUsername); 
+        attributeList.push(attributeEmail);
+        attributeList.push(attributePersonalName);
+        attributeList.push(attributeGender);
+        attributeList.push(attributePhoneNumber);
+        
+
+        userPool.signUp(email, password, attributeList, null,
             function signUpCallback(err, result) {
                 if (!err) {
                     onSuccess(result);
@@ -127,16 +156,20 @@ var Resepmoe = window.Resepmoe || {};
     }
 
     function handleRegister(event) {
-        var email = $('#emailInputRegister').val();
-        var password = $('#passwordInputRegister').val();
-        var password2 = $('#password2InputRegister').val();
+
+        var username = document.getElementById("uname").value;  
+        var password =  document.getElementById("password").value;
+        var nama =  document.getElementById("nama").value;      
+        var gender =  document.getElementById("jenis_kelamin").value;
+        var phone_number = document.getElementById("nomortelepon").value;
+        var email = document.getElementById("email").value;
 
         var onSuccess = function registerSuccess(result) {
             var cognitoUser = result.user;
             console.log('user name is ' + cognitoUser.getUsername());
             var confirmation = ('Registration successful. Please check your email inbox or spam folder for your verification code.');
             if (confirmation) {
-                window.location.href = 'verify.html';
+                window.location.href = 'http://resepmoe.s3-website.us-east-2.amazonaws.com/views/layout/login.html';
             }
         };
         var onFailure = function registerFailure(err) {
@@ -144,11 +177,6 @@ var Resepmoe = window.Resepmoe || {};
         };
         event.preventDefault();
 
-        if (password === password2) {
-            register(email, password, onSuccess, onFailure);
-        } else {
-            alert('Passwords do not match');
-        }
     }
 
     function handleVerify(event) {
