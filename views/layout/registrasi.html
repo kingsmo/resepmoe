@@ -5,19 +5,87 @@
       }
 
     }
+
+    @media (max-width: 992px) {
+ .title {
+   margin-top: 70px;
+ }
+ .card {
+   width: 8rem !important;
+   height: 15rem !important;
+   font-size: 8px;
+ }
+ .social-description{
+   padding-left: 0px !important;
+   padding-right: 0px !important;
+   width: 100px !important;
+ }
+ .card-img-top {
+   height:95px;
+ }
+ .card-body{
+   padding:11px !important;
+ }
+ .card-title{
+   margin-bottom:9px !important;
+   margin-top:5px !important;
+   height: 24px;
+ }
+ p.nama{
+   margin-top: 30px;
+ }
+ p.create{
+   margin-top: 35px;
+ }
+}
+
+@media (min-width: 992px) {
+  .card-img-top {
+    height:360px;
+  }
+}
 </style>
 
-<script src="js/amazon-cognito-auth.min.js"></script>
+<script>
+$(function(){
+  $("#header").load("https://resepmoe.s3.us-east-2.amazonaws.com/views/layout/guest_header.html");
+  $("#footer").load("https://resepmoe.s3.us-east-2.amazonaws.com/views/layout/user_footer.html");
+});
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://resepmoe.s3.us-east-2.amazonaws.com/js/amazon-cognito-auth.min.js"></script>
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script> 
-<script src="js/amazon-cognito-identity.min.js"></script>  
-<script src="js/config.js"></script>
+<script src="https://resepmoe.s3.us-east-2.amazonaws.com/js/amazon-cognito-identity.min.js"></script>  
+<script src="https://resepmoe.s3.us-east-2.amazonaws.com/js/config.js"></script>
+
+
+
+<!DOCTYPE html>
+<html>
+
+
+<div id="header"></div>
+
+        <div id="noCognitoMessage" class="configMessage" style="display: none;">
+            <div class="backdrop"></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">No Cognito User Pool Configured</h3>
+                </div>
+                <div class="panel-body">
+                    <p>There is no user pool configured in <a href="/js/config.js"></a></p>
+                </div>
+            </div>
+        </div>
+
 
 <body class="sidebar-collapse">
   <div class="section section-signup" style="background-image: url('/resepmu/application/assets/img/bg11.jpg'); background-size: cover; background-position: top center; min-height: 700px;">
     <div class="container">
       <div class="row">
         <div class="card card-signup" data-background-color="orange" style="opacity:0.96">
-          <form class="form">
+          <form class="form" id="registrationForm">
             <div class="card-header text-center">
               <h3 class="card-title title-up">Daftar</h3>
             </div>
@@ -28,12 +96,12 @@
                     <i class="fa fa-user-circle"></i>
                   </span>
                 </div>
-                <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" required>
+                <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" pattern=".*" required>
               </div>
               <div>
                 <i class="fa fa-venus-mars"></i>
                 <label style="font-size: 12px" for="jenis_kelamin"> Jenis Kelamin:</label>
-                  <select style="margin-bottom:10px;" name="jenis_kelamin" class="form-control" id="jenis_kelamin">
+                  <select style="margin-bottom:10px;" name="jenis_kelamin" class="form-control" pattern=".*" id="jenis_kelamin" >
                     <option value="Laki-laki" style="color:black;">Laki-laki</option>
                     <option value="Perempuan" style="color:black;">Perempuan</option>
                   </select>
@@ -44,7 +112,7 @@
                     <i class="fa fa-user-circle"></i>
                   </span>
                 </div>
-                <input type="text" name="username" id="uname" placeholder="Masukkan Username" class="form-control" required />
+                <input type="text" name="username" id="uname" placeholder="Masukkan Username" pattern=".*" class="form-control" required />
               </div>
               <div class="input-group no-border">
                 <div class="input-group-prepend">
@@ -52,7 +120,7 @@
                     <i class="fa fa-lock"></i>
                   </span>
                 </div>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan Password" required>
+                <input type="password" name="password" id="password" class="form-control" pattern=".*" placeholder="Masukkan Password" required>
               </div>
               <div class="input-group no-border">
                 <div class="input-group-prepend">
@@ -60,7 +128,7 @@
                     <i class="fa fa-envelope"></i>
                   </span>
                 </div>
-                <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan Email" oninvalid="if (this.value == ''){this.setCustomValidity('This field is required!')} if (this.value != ''){this.setCustomValidity('The email you entered is invalid!')}" oninput="setCustomValidity('')" required="">
+                <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan Email" pattern=".*" oninvalid="if (this.value == ''){this.setCustomValidity('This field is required!')} if (this.value != ''){this.setCustomValidity('The email you entered is invalid!')}" oninput="setCustomValidity('')" required="">
               </div>
               <div class="input-group no-border">
                 <div class="input-group-prepend">
@@ -68,7 +136,7 @@
                     <i class="fa fa-phone"></i>
                   </span>
                 </div>
-                <input type="number" class="form-control" name="nomor_telepon" id="nomortelepon" placeholder="Masukkan Nomor Telepon" required>
+                <input type="number" class="form-control" name="nomor_telepon" id="nomortelepon" pattern=".*" placeholder="Masukkan Nomor Telepon" required>
               </div>
 <!--               <div class="input-group">
                 <div class="input-group-prepend">
@@ -89,6 +157,8 @@
     </div>
   </div>
 </body>
+<div id="footer"></div>
+</html>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     var elements = document.getElementsByTagName("INPUT");
@@ -111,73 +181,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 })
 
-		var nama;
-		var gender;
-		var username;
-		var password;
-		var nomor_telepon;
-    var email;
 
-  	var poolData;	
-	  function registerButton() {
-		
-		
-		username = document.getElementById("uname").value;	
-		password =  document.getElementById("password").value;
-
-    nama =  document.getElementById("nama").value;  	
-		gender =  document.getElementById("jenis_kelamin").value;
-    phone_number = document.getElementById("nomortelepon").value;
-    email = document.getElementById("email").value;
-    
-
-		poolData = {
-				UserPoolId : _config.cognito.userPoolId, //<<--- POOL ID SAMA CLIENT ID NYA
-				ClientId : _config.cognito.clientId 	 //<<--- POOL ID SAMA CLIENT ID NYA
-			};		
-		var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-
-		var attributeList = [];
-		
-		
-		var dataPersonalName = {
-			Name : 'name', 
-			Value : nama, //get from form field
-		};
-    var dataEmail = {
-      Name : 'email', 
-      Value : email, //get from form field
-    };
-    
-    var dataGender = {
-      Name : 'gender', 
-      Value : gender, //get from form field
-    };
-
-        var dataPhoneNumber = {
-      Name : 'nomortelepon', 
-      Value : phone_number, //get from form field
-    };
-
-
-		var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataUser);
-		var attributePersonalName = new AmazonCognitoIdentity.CognitoUserAttribute(dataPersonalName);
-		var attributeGender = new AmazonCognitoIdentity.CognitoUserAttribute(dataGender);
-    var attributePhoneNumber = new AmazonCognitoIdentity.CognitoUserAttribute(dataPhoneNumber);
-		
-		attributeList.push(attributeEmail);
-		attributeList.push(attributePersonalName);
-    attributeList.push(attributeGender);
-    attributeList.push(attributePhoneNumber);
-
-
-		userPool.signUp(username, password, attributeList, null, function(err, result){
-			if (err) {
-				alert(err.message || JSON.stringify(err));
-				return;
-			}
-			cognitoUser = result.user;
-			// console.log('user name is ' + cognitoUser.getUsername());
-		});
-	  }
 </script>
