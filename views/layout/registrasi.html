@@ -8,7 +8,7 @@
   max-height:500px;
   overflow-y: scroll;
   }
-  .sidebar-collapse .navbar-collapse{
+  .sidebar-collapse .navbar-collapse:before{
     background:linear-gradient(#f96332 100%, #fff 90%) !important;
   }
 </style>
@@ -95,7 +95,7 @@
     <div class="container">
       <div class="row">
         <div class="card card-signup" data-background-color="orange" style="opacity:0.96">
-          <form class="form" method="post" id="registrationForm">
+          <form id="registrationForm">
             <div class="card-header text-center">
               <h3 class="card-title title-up">Daftar</h3>
               <?php echo validation_errors('<div class="error"></div>
