@@ -169,7 +169,7 @@ var Resepmoe = window.Resepmoe || {};
             console.log('user name is ' + cognitoUser.getUsername());
             var confirmation = ('Registration successful. Please check your email inbox or spam folder for your verification code.');
             if (confirmation) {
-                window.location.href = 'http://resepmoe.s3-website.us-east-2.amazonaws.com/views/layout/verifikasi.html';
+                window.location.href = 'https://d1jaqt508clj4.cloudfront.net/views/layout/verifikasi.html';
             }
         };
         var onFailure = function registerFailure(err) {
