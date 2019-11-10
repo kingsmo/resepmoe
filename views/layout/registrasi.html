@@ -182,4 +182,75 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     }
 })
+
+var nama;
+    var gender;
+    var username;
+    var password;
+    var nomor_telepon;
+    var email;
+
+    var poolData; 
+    function registerButton() {
+    
+    
+    username = document.getElementById("uname").value;  
+    password =  document.getElementById("password").value;
+
+    nama =  document.getElementById("nama").value;    
+    gender =  document.getElementById("jenis_kelamin").value;
+    phone_number = document.getElementById("nomortelepon").value;
+    email = document.getElementById("email").value;
+    
+
+    poolData = {
+        UserPoolId : _config.cognito.userPoolId, //<<--- POOL ID SAMA CLIENT ID NYA
+        ClientId : _config.cognito.clientId    //<<--- POOL ID SAMA CLIENT ID NYA
+      };    
+    var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+    var attributeList = [];
+    
+    
+    var dataPersonalName = {
+      Name : 'name', 
+      Value : nama, //get from form field
+    };
+    var dataEmail = {
+      Name : 'email', 
+      Value : email, //get from form field
+    };
+    
+    var dataGender = {
+      Name : 'gender', 
+      Value : gender, //get from form field
+    };
+
+        var dataPhoneNumber = {
+      Name : 'nomortelepon', 
+      Value : phone_number, //get from form field
+    };
+
+
+    var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataUser);
+    var attributePersonalName = new AmazonCognitoIdentity.CognitoUserAttribute(dataPersonalName);
+    var attributeGender = new AmazonCognitoIdentity.CognitoUserAttribute(dataGender);
+    var attributePhoneNumber = new AmazonCognitoIdentity.CognitoUserAttribute(dataPhoneNumber);
+    
+    attributeList.push(attributeEmail);
+    attributeList.push(attributePersonalName);
+    attributeList.push(attributeGender);
+    attributeList.push(attributePhoneNumber);
+
+
+    userPool.signUp(username, password, attributeList, null, function(err, result){
+      if (err) {
+        alert(err.message || JSON.stringify(err));
+        return;
+      }
+      cognitoUser = result.user;
+      // console.log('user name is ' + cognitoUser.getUsername());
+    });
+    }
+
 </script>
