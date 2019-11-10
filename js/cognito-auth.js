@@ -62,11 +62,11 @@ var Resepmoe = window.Resepmoe || {};
             Value : nama, //get from form field
         };
         var dataGender = {
-          Name : 'gender', 
+          Name : 'jenis_kelamin', 
           Value : gender, //get from form field
         };
 
-            var dataPhoneNumber = {
+        var dataPhoneNumber = {
           Name : 'nomortelepon', 
           Value : phone_number, //get from form field
         };
@@ -157,19 +157,19 @@ var Resepmoe = window.Resepmoe || {};
 
     function handleRegister(event) {
 
-        var username = document.getElementById("uname").value;  
-        var password =  document.getElementById("password").value;
-        var nama =  document.getElementById("nama").value;      
-        var gender =  document.getElementById("jenis_kelamin").value;
-        var phone_number = document.getElementById("nomortelepon").value;
-        var email = document.getElementById("email").value;
+        var username = $('#uname').val();
+        var password =  $('#password').val();
+        var nama =  $('#nama').val();      
+        var gender =  $('#jenis_kelamin').val();
+        var phone_number = $('#nomortelepon').val();
+        var email = $('#email').val();
 
         var onSuccess = function registerSuccess(result) {
             var cognitoUser = result.user;
             console.log('user name is ' + cognitoUser.getUsername());
             var confirmation = ('Registration successful. Please check your email inbox or spam folder for your verification code.');
             if (confirmation) {
-                window.location.href = 'http://resepmoe.s3-website.us-east-2.amazonaws.com/views/layout/login.html';
+                window.location.href = 'http://resepmoe.s3-website.us-east-2.amazonaws.com/views/layout/verifikasi.html';
             }
         };
         var onFailure = function registerFailure(err) {

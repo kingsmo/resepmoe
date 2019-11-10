@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
 })
 </script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function signInButton() {
     
 	var authenticationData = {
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function() {
         },
     });
   }
-</script>
+</script> -->
 
 <body class="login-page sidebar-collapse">
 	<div id="noCognitoMessage" class="configMessage" style="display: none;">
@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			<div class="col-md-5 ml-auto mr-auto">
 			 <div class="card card-login card-plain">
 			 	
-				<form class="form">
+				<form class="form" id="verifyForm">
 
 					<div class="card-header text-center">
 						<h1 class="title">
@@ -160,11 +160,14 @@ document.addEventListener("DOMContentLoaded", function() {
 					<div id="infoMessage"></div>
 					<div class="card-body">
 					 <div class="input-group no-border input-lg">
-						<input id="inputUsername" style="text-align:center;" type="text" placeholder="Masukkan Kode Verifikasi" class="form-control" required autofocus/>
+						<input id="inputUsername" style="text-align:center;" type="text" placeholder="Masukkan Email" class="form-control" required autofocus/>
+					 </div>
+					 <div class="input-group no-border input-lg">
+						<input id="codeInputVerify" style="text-align:center;" type="text" placeholder="Masukkan Kode Verifikasi" class="form-control" required autofocus/>
 					 </div>
 					</div>
 					<div class="card-footer text-center">
-					 <button type="button" class="btn btn-primary btn-round btn-lg btn-block" onclick="signInButton()">Verifikasi</button>
+					 <button type="button" class="btn btn-primary btn-round btn-lg btn-block">Verifikasi</button>
 					 <div class="text-center">
 					 </div>
 				</form>

@@ -98,11 +98,11 @@
                     <i class="fa fa-user-circle"></i>
                   </span>
                 </div>
-                <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama" required>
+                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" required>
               </div>
               <div>
                 <i class="fa fa-venus-mars"></i>
-                <label style="font-size: 12px" for="jenis_kelamin"> Jenis Kelamin:</label>
+                <label style="font-size: 12px" for="jenis_kelamin" id="jenis_kelamin"> Jenis Kelamin:</label>
                   <select style="margin-bottom:10px;" name="jenis_kelamin" class="form-control" id="jenis_kelamin">
                     <option value="Laki-laki" style="color:black;">Laki-laki</option>
                     <option value="Perempuan" style="color:black;">Perempuan</option>
@@ -114,7 +114,7 @@
                     <i class="fa fa-user-circle"></i>
                   </span>
                 </div>
-                <input type="text" name="username" placeholder="Masukkan Username" class="form-control" required />
+                <input type="text" name="username" placeholder="Masukkan Username" id="uname" class="form-control" required />
               </div>
               <div class="input-group no-border">
                 <div class="input-group-prepend">
@@ -122,7 +122,7 @@
                     <i class="fa fa-lock"></i>
                   </span>
                 </div>
-                <input type="password" name="password" class="form-control" placeholder="Masukkan Password" required>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan Password" required>
               </div>
               <div class="input-group no-border">
                 <div class="input-group-prepend">
@@ -130,7 +130,7 @@
                     <i class="fa fa-envelope"></i>
                   </span>
                 </div>
-                <input type="text" class="form-control" name="email" placeholder="Masukkan Email" oninvalid="if (this.value == ''){this.setCustomValidity('This field is required!')} if (this.value != ''){this.setCustomValidity('The email you entered is invalid!')}" oninput="setCustomValidity('')" required="">
+                <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email" oninvalid="if (this.value == ''){this.setCustomValidity('This field is required!')} if (this.value != ''){this.setCustomValidity('The email you entered is invalid!')}" oninput="setCustomValidity('')" required="">
               </div>
               <div class="input-group no-border">
                 <div class="input-group-prepend">
@@ -138,9 +138,9 @@
                     <i class="fa fa-phone"></i>
                   </span>
                 </div>
-                <input type="number" class="form-control" name="nomor_telepon" placeholder="Masukkan Nomor Telepon" required>
+                <input type="number" class="form-control" name="nomor_telepon" id="nomor_telepon" placeholder="Masukkan Nomor Telepon" required>
               </div>
-              <div class="input-group">
+<!--               <div class="input-group">
                 <div class="input-group-prepend">
                   <span style="width:75px; height:32px; font-size:8px;" class="input-group-text" id="inputGroupFileAddon01">Upload Foto</span>
                 </div>
@@ -148,7 +148,7 @@
                   <input accept="image/*" type="file" name="user_foto" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" required>
                   <label style="font-size:12px;" class="custom-file-label" for="inputGroupFile01">Choose file</label>
                 </div>
-              </div>
+              </div> -->
             </div>
             <div class="card-footer text-center">
               <button type="submit" class="btn btn-neutral btn-round btn-lg">Daftar</button>
