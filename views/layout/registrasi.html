@@ -95,10 +95,9 @@
     <div class="container">
       <div class="row">
         <div class="card card-signup" data-background-color="orange" style="opacity:0.96">
-          <form id="registrationForm">
+          <form onsubmit="return false;">
             <div class="card-header text-center">
               <h3 class="card-title title-up">Daftar</h3>
-              <?php echo validation_errors('<div class="error"></div>
             </div>
             <div class="card-body">
               <div class="input-group no-border">
@@ -109,14 +108,14 @@
                 </div>
                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" pattern=".*" required>
               </div>
-              <div>
+<!--               <div>
                 <i class="fa fa-venus-mars"></i>
                 <label style="font-size: 12px" for="jenis_kelamin" > Jenis Kelamin:</label>
                   <select style="margin-bottom:10px;" id="jenis_kelamin" name="jenis_kelamin" class="form-control" id="jenis_kelamin">
                     <option value="Laki-laki" style="color:black;">Male</option>
                     <option value="Perempuan" style="color:black;">Female</option>
                   </select>
-              </div>
+              </div> -->
               <div class="input-group no-border">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
@@ -162,13 +161,13 @@
             <div class="card-footer text-center">
               <button type="submit" class="btn btn-neutral btn-round btn-lg" onclick="registerButton()" >Daftar</button>
             </div>
-          
+          </form>
         </div>
       </div>
     </div>
-  </div></form>
+  </div>
 </body>
-<script>
+<!-- <script>
 document.addEventListener("DOMContentLoaded", function() {
     var elements = document.getElementsByTagName("INPUT");
     for (var i = 0; i < elements.length; i++) {
@@ -189,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     }
 })
-</script>
+</script> -->
 
 <script type="text/javascript">
   
@@ -206,7 +205,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
     username = document.getElementById("uname").value;  
     password =  document.getElementById("password").value;
-
     nama =  document.getElementById("nama").value;    
     gender =  document.getElementById("jenis_kelamin").value;
     phone_number = document.getElementById("nomortelepon").value;
@@ -229,12 +227,6 @@ document.addEventListener("DOMContentLoaded", function() {
       Name : 'email', 
       Value : email, //get from form field
     };
-    
-    var dataGender = {
-      Name : 'gender', 
-      Value : gender, //get from form field
-    };
-
         var dataPhoneNumber = {
       Name : 'nomortelepon', 
       Value : phone_number, //get from form field
@@ -243,26 +235,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataUser);
     var attributePersonalName = new AmazonCognitoIdentity.CognitoUserAttribute(dataPersonalName);
-    var attributeGender = new AmazonCognitoIdentity.CognitoUserAttribute(dataGender);
     var attributePhoneNumber = new AmazonCognitoIdentity.CognitoUserAttribute(dataPhoneNumber);
     
     attributeList.push(attributeEmail);
     attributeList.push(attributePersonalName);
-    attributeList.push(attributeGender);
     attributeList.push(attributePhoneNumber);
 
-
-            var onSuccess = function registerSuccess(result) {
-            var cognitoUser = result.user;
-            console.log('user name is ' + cognitoUser.getUsername());
-            var confirmation = ('Registration successful. Please check your email inbox or spam folder for your verification code.');
-            if (confirmation) {
-                window.location = './verifikasi.html?uname='+ cognitoUser.getUsername();
-            }
-            };
-            var onFailure = function registerFailure(err) {
-                alert(err);
-            };
-            event.preventDefault();
+userPool.signUp(username, password, attributeList, null, function(
+        err,
+        result
+    ) {
+        if (err) {
+            alert(err.message || JSON.stringify(err));
+            return;
+        }
+        var cognitoUser = result.user;
+        console.log('berhasil daftar username: ' + cognitoUser.getUsername());
+        alert("Pendaftaran berhasil! Silahkan verifikasi email kamu.");
+        window.location = './konfirmasi.html?uname='+ cognitoUser.getUsername();
+    });
 
 </script>
