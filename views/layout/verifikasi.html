@@ -72,11 +72,11 @@
 
 <!-- Javascript SDKs-->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script> 
-<script src="../../js/amazon-cognito-auth.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/amazon-cognito-identity-js@3.2.0/dist/amazon-cognito-identity.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.543.0/aws-sdk.min.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
-<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script> 
 <script src="../../js/amazon-cognito-identity.min.js"></script>   
-<script src="../../js/config.js"></script>
+<!-- <script src="../../js/config.js"></script> -->
 
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function() {
@@ -95,40 +95,47 @@ document.addEventListener("DOMContentLoaded", function() {
 })
 </script>
 
-<!-- <script type="text/javascript">
-	function signInButton() {
-    
-	var authenticationData = {
-        Username : document.getElementById("inputUsername").value,
-        Password : document.getElementById("inputPassword").value,
-    };
-    var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
-	var poolData = {
-        UserPoolId : _config.cognito.userPoolId, // Your user pool id here
-        ClientId : _config.cognito.clientId // Your client id here
-    };
-	
-    var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-	
-    var userData = {
-        Username : document.getElementById("inputUsername").value,
-        Pool : userPool,
-    };
-	
-    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-    
-	cognitoUser.authenticateUser(authenticationDetails, {
-        onSuccess: function (result) {
-			var accessToken = result.getAccessToken().getJwtToken();
-			console.log(accessToken);	
-        },
+<script type="text/javascript">
 
-        onFailure: function(err) {
-            alert(err.message || JSON.stringify(err));
-        },
-    });
-  }
-</script> -->
+		var poolData; 
+		    poolData = {
+		        UserPoolId : 'us-east-2_TFc9jwb8l',
+		        ClientId : '75l4bthoo7icdbe2m1iijfitle'
+		      };    
+		    var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+
+	function konfirmasi(){
+	    var uname = getParameterByName('uname');
+	    var kode = $('#codeInputVerify').val();
+
+	    var userData = {
+	        Username: uname,
+	        Pool: userPool,
+	    };
+	    
+	    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+	    cognitoUser.confirmRegistration(kode, true, function(err, result) {
+	        if (err) {
+	            alert(err.message || JSON.stringify(err));
+	            return;
+	        }
+	        console.log('Verifikasi berhasil: ' + result);
+	        alert("Verifikasi berhasil! Silahkan login.");
+	        window.location = './login.html';
+	    });
+	}
+
+	function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+</script>
 
 <body class="login-page sidebar-collapse">
 	<div id="noCognitoMessage" class="configMessage" style="display: none;">
@@ -149,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			<div class="col-md-5 ml-auto mr-auto">
 			 <div class="card card-login card-plain">
 			 	
-				<form class="form" id="verifyForm">
+				<form class="form">
 
 					<div class="card-header text-center">
 						<h1 class="title">
@@ -159,9 +166,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 					<div id="infoMessage"></div>
 					<div class="card-body">
-					 <div class="input-group no-border input-lg">
-						<input id="inputUsername" style="text-align:center;" type="text" placeholder="Masukkan Email" class="form-control" required autofocus/>
-					 </div>
 					 <div class="input-group no-border input-lg">
 						<input id="codeInputVerify" style="text-align:center;" type="text" placeholder="Masukkan Kode Verifikasi" class="form-control" required autofocus/>
 					 </div>
