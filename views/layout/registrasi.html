@@ -212,8 +212,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var poolData; 
     poolData = {
-        UserPoolId : _config.cognito.userPoolId, //<<--- POOL ID SAMA CLIENT ID NYA
-        ClientId : _config.cognito.clientId    //<<--- POOL ID SAMA CLIENT ID NYA
+        UserPoolId : 'us-east-2_TFc9jwb8l',
+        ClientId : '75l4bthoo7icdbe2m1iijfitle'
       };    
     var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
     var attributeList = [];
