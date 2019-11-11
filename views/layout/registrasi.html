@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function() {
       Value : email, //get from form field
     };
         var dataPhoneNumber = {
-      Name : 'PhoneNumber', 
+      Name : 'phonenumber', 
       Value : nomortelepon, //get from form field
     };
 
@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var cognitoUser = result.user;
         console.log('berhasil daftar username: ' + cognitoUser.getUsername());
         alert("Pendaftaran berhasil! Silahkan verifikasi email kamu.");
-        window.location = './konfirmasi.html?uname='+ cognitoUser.getUsername();
+        window.location = './verifikasi.html?uname='+ cognitoUser.getUsername();
     });
 }
 </script>
