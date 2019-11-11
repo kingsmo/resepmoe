@@ -200,6 +200,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var email;
 
     var poolData; 
+
     function registerButton() {
     
     
@@ -254,5 +255,5 @@ userPool.signUp(username, password, attributeList, null, function(
         alert("Pendaftaran berhasil! Silahkan verifikasi email kamu.");
         window.location = './konfirmasi.html?uname='+ cognitoUser.getUsername();
     });
-
+}
 </script>
