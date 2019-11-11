@@ -191,27 +191,26 @@ document.addEventListener("DOMContentLoaded", function() {
 </script> -->
 
 <script type="text/javascript">
-  
-  var nama;
-    var gender;
-    var username;
-    var password;
-    var nomor_telepon;
-    var email;
 
-    var poolData; 
+    
 
     function registerButton() {
-    
-    
-    username = document.getElementById("uname").value;  
-    password =  document.getElementById("password").value;
-    nama =  document.getElementById("nama").value;    
-    gender =  document.getElementById("jenis_kelamin").value;
-    phone_number = document.getElementById("nomortelepon").value;
-    email = document.getElementById("email").value;
-    
 
+
+
+    // username = document.getElementById("uname").value;  
+    // password =  document.getElementById("password").value;
+    // nama =  document.getElementById("nama").value;    
+    // gender =  document.getElementById("jenis_kelamin").value;
+    // phone_number = document.getElementById("nomortelepon").value;
+    // email = document.getElementById("email").value;
+    var username = $('#uname').val();
+    var password = $('#password').val();
+    var nama = $('#nama').val();
+    var nomortelepon = $('#nomortelepon').val();
+    var email = $('#email').val();
+
+    var poolData; 
     poolData = {
         UserPoolId : _config.cognito.userPoolId, //<<--- POOL ID SAMA CLIENT ID NYA
         ClientId : _config.cognito.clientId    //<<--- POOL ID SAMA CLIENT ID NYA
@@ -242,10 +241,8 @@ document.addEventListener("DOMContentLoaded", function() {
     attributeList.push(attributePersonalName);
     attributeList.push(attributePhoneNumber);
 
-userPool.signUp(username, password, attributeList, null, function(
-        err,
-        result
-    ) {
+    userPool.signUp(username, password, attributeList, null, function(
+        err,result) {
         if (err) {
             alert(err.message || JSON.stringify(err));
             return;
