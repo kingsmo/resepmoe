@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log('user name is ' + cognitoUser.getUsername());
             var confirmation = ('Registration successful. Please check your email inbox or spam folder for your verification code.');
             if (confirmation) {
-                window.location.href = 'https://d1jaqt508clj4.cloudfront.net/views/layout/verifikasi.html';
+                window.location = './verifikasi.html?uname='+ cognitoUser.getUsername();
             }
             };
             var onFailure = function registerFailure(err) {
